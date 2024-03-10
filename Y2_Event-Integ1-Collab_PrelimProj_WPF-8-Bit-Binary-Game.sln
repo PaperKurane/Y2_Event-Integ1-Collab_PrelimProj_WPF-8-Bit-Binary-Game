@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33110.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Y2_Event-Integ1-Collab_PrelimProj_WPF-8-Bit-Binary-Game", "Y2_Event-Integ1-Collab_PrelimProj_WPF-8-Bit-Binary-Game\Y2_Event-Integ1-Collab_PrelimProj_WPF-8-Bit-Binary-Game.csproj", "{F9762D7C-8614-4483-99F3-CDBCD08ABFBC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F9762D7C-8614-4483-99F3-CDBCD08ABFBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9762D7C-8614-4483-99F3-CDBCD08ABFBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9762D7C-8614-4483-99F3-CDBCD08ABFBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9762D7C-8614-4483-99F3-CDBCD08ABFBC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A95F6B3C-2EC6-48C8-BE11-C72B90C18347}
+	EndGlobalSection
+EndGlobal
