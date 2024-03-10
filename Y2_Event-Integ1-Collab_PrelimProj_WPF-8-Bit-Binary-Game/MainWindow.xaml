@@ -14,10 +14,9 @@
         <Rectangle x:Name="rBorderReference" Grid.ColumnSpan="10" HorizontalAlignment="Left" Height="23" Margin="0,411,0,0" VerticalAlignment="Top" Width="800" Fill="Black" Stroke="Black"/>
         <Rectangle x:Name="rBorderReferenceVertical" HorizontalAlignment="Left" Height="434" Margin="784,0,0,0" VerticalAlignment="Center" Width="16" Fill="Black" Stroke="Black"/>
 
-        <Image HorizontalAlignment="Left" Height="210" Margin="141,9,0,0" VerticalAlignment="Top" Width="500" Source="/Bit Masters Logo.png" RenderTransformOrigin="0.5,0.5">
+        <Image HorizontalAlignment="Left" Height="210" Margin="141,13,0,0" VerticalAlignment="Top" Width="500" Source="/Bit Masters Logo.png" RenderTransformOrigin="0.5,0.5">
             <Image.RenderTransform>
                 <TranslateTransform Y="0"/>
-                <!-- Initial position -->
             </Image.RenderTransform>
             <Image.Triggers>
                 <EventTrigger RoutedEvent="Loaded">
@@ -33,9 +32,9 @@
             </Image.Triggers>
         </Image>
 
-
-        <Label x:Name="lbTitle" Content="Start" HorizontalContentAlignment="Center" FontSize="42" FontWeight="Bold" Margin="305,214,323,0" VerticalAlignment="Top" Foreground="White"/>
-
+        <Button x:Name="btnStart" Content="Start" HorizontalContentAlignment="Center" FontSize="34" Margin="339,204,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="104" FontFamily="Segoe UI Semibold" FontWeight="Bold"/>
+        <Button x:Name="btnInstructions" Content="How to Play" HorizontalContentAlignment="Center" FontSize="34" Margin="282,266,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="218" FontFamily="Segoe UI Semibold" FontWeight="Bold"/>
+        <Button x:Name="btnQuitGame" Content="Quit" HorizontalContentAlignment="Center" FontSize="34" Margin="344,328,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="94" FontFamily="Segoe UI Semibold" FontWeight="Bold"/>
 
     </Grid>
 </Window>
