@@ -6,7 +6,18 @@
         xmlns:local="clr-namespace:Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+    <Grid Margin="0,0,16,22">
+        <Grid.Background>
+            <ImageBrush ImageSource="GameResources/GameBackground-Realistic.png"/>
+        </Grid.Background>
+
+        <Label x:Name="lbTitle" Content="Start" HorizontalContentAlignment="Center" FontSize="48" FontWeight="Bold" Margin="122,226,507,0" VerticalAlignment="Top" Foreground="White"/>
+
+        <Rectangle x:Name="rBorderReference" Grid.ColumnSpan="10" HorizontalAlignment="Left" Height="23" Margin="0,411,0,0" VerticalAlignment="Top" Width="800" Fill="Black" Stroke="Black"/>
+        <Rectangle x:Name="rBorderReferenceVertical" HorizontalAlignment="Left" Height="434" Margin="784,0,0,0" VerticalAlignment="Center" Width="16" Fill="Black" Stroke="Black"/>
+
+        <Image HorizontalAlignment="Center" Height="210" Margin="0,6,0,0" VerticalAlignment="Top" Width="500" Source="/Bit Masters Logo.png" RenderTransformOrigin="0.5,0.5">
+        </Image>
+
     </Grid>
 </Window>

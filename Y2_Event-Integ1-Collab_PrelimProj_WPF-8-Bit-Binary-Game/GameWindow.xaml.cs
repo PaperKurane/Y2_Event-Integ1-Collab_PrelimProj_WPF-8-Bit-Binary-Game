@@ -37,6 +37,14 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             StartGame();
         }
 
+        private void Window_Closed(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            //MainWindow mw = new MainWindow();
+            //mw.Show();
+
+            WindowManager._gameWin = false;
+        }
+
         private void StartGame()
         {
             btnSubmit.Visibility = Visibility.Collapsed;

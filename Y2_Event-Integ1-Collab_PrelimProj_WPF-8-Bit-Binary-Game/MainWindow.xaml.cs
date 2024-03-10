@@ -20,9 +20,47 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
     /// </summary>
     public partial class MainWindow : Window
     {
+        //Window1 w1 = new Window1();
+        //Window1 w2 = new Window1("Hello world");
         public MainWindow()
         {
             InitializeComponent();
+            if (!WindowManager._mainWin)
+            {
+                WindowManager._mainWindow = this;
+                WindowManager._mainWin = true;
+            }
+        }
+
+        private void btnButton_Click(object sender, RoutedEventArgs e)
+        {
+            //w1.Show();
+            //w2.Show();
+
+            if (!WindowManager._gameWin)
+            {
+                WindowManager._gameWindow = new GameWindow();
+                WindowManager._gameWin = true;
+                WindowManager._gameWindow.Show();
+                //this.Hide();
+            }
+            else
+            {
+                WindowManager._gameWindow.Focus();
+            }
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            //Window1 w1 = new Window1();
+            //w1.Show();
+
+            WindowManager._mainWin = false;
         }
     }
 }
