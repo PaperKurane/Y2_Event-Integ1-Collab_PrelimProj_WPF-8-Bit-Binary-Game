@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game"
         mc:Ignorable="d"
         Title="The Clod 8-Bit Binary Game (Very Fun Trust Me)" Height="450" Width="800" ResizeMode="NoResize">
-    <Grid Margin="0,0,16,22">
+    <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="GameResources/GameBackground.png"/>
         </Grid.Background>
