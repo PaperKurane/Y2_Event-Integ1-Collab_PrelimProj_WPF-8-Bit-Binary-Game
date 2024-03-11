@@ -32,17 +32,14 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             }
         }
 
-        private void btnButton_Click(object sender, RoutedEventArgs e)
+        private void btnStart_Click(object sender, RoutedEventArgs e)
         {
-            //w1.Show();
-            //w2.Show();
-
             if (!WindowManager._gameWin)
             {
                 WindowManager._gameWindow = new GameWindow();
                 WindowManager._gameWin = true;
                 WindowManager._gameWindow.Show();
-                //this.Hide();
+                this.Hide();
             }
             else
             {
@@ -61,6 +58,11 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             //w1.Show();
 
             WindowManager._mainWin = false;
+        }
+
+        private void btnQuitGame_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

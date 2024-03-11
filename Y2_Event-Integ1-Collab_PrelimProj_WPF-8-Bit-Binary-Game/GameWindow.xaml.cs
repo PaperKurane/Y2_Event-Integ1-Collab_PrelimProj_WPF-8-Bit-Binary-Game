@@ -43,6 +43,33 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             //mw.Show();
 
             WindowManager._gameWin = false;
+
+            if (!WindowManager._mainWin)
+            {
+                WindowManager._mainWin = true;
+                WindowManager._mainWindow.Show();
+            }
+            else
+            {
+                WindowManager._gameWindow.Focus();
+                WindowManager._mainWindow.Close();
+            }
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            WindowManager._gameWin = false;
+
+            if (!WindowManager._mainWin)
+            {
+                WindowManager._mainWin = true;
+                WindowManager._mainWindow.Show();
+            }
+            else
+            {
+                WindowManager._mainWindow.Focus();
+                WindowManager._gameWindow.Close();
+            }
         }
 
         private void StartGame()

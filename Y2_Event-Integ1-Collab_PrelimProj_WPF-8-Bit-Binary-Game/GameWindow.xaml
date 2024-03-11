@@ -42,7 +42,7 @@
         <Button x:Name="btnBinary2" Content="0" Margin="532,264,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="70" Width="60" FontSize="38" FontWeight="Normal" Background="White" Click="btnBinaryClick"/>
         <Button x:Name="btnBinary1" Content="0" Margin="598,264,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="70" Width="60" FontSize="38" FontWeight="Normal" Background="White" Click="btnBinaryClick"/>
 
-        <Button x:Name="btnExit" Visibility="Collapsed" Content="Exit" Margin="142,342,0,0" FontSize="18" FontWeight="Normal" Background="White" Height="36" VerticalAlignment="Top" Click="btnSubmit_Click" HorizontalAlignment="Left" Width="256"/>
+        <Button x:Name="btnExit" Visibility="Collapsed" Content="Exit" Margin="142,342,0,0" FontSize="18" FontWeight="Normal" Background="White" Height="36" VerticalAlignment="Top" Click="btnExit_Click" HorizontalAlignment="Left" Width="256"/>
         <Button x:Name="btnSubmit" Visibility="Visible" Content="Submit" Margin="142,342,0,0" FontSize="18" FontWeight="Normal" Background="White" Height="36" VerticalAlignment="Top" Click="btnSubmit_Click" HorizontalAlignment="Left" Width="516"/>
         <!--#endregion-->
 
