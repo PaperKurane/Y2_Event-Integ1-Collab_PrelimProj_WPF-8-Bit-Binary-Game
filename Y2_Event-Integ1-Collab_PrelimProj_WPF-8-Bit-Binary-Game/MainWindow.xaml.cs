@@ -39,7 +39,8 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
                 WindowManager._gameWindow = new GameWindow();
                 WindowManager._gameWin = true;
                 WindowManager._gameWindow.Show();
-                this.Hide();
+                //this.Hide();
+                WindowManager._mainWindow.Close();
             }
             else
             {
