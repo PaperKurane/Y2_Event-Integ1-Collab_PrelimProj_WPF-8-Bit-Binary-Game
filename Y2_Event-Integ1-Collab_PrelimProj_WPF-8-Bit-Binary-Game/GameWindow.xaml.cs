@@ -35,11 +35,12 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
         {
             InitializeComponent();
             StartGame();
+
+
         }
 
-        private void Window_Closed(object sender, System.ComponentModel.CancelEventArgs e)
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) // Do these even do anything
         {
-
             WindowManager._gameWin = false;
 
             if (!WindowManager._mainWin)
@@ -52,7 +53,6 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             else
             {
                 WindowManager._gameWindow.Focus();
-                WindowManager._mainWindow.Close();
             }
         }
 
@@ -62,16 +62,17 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 
             if (!WindowManager._mainWin)
             {
-                //WindowManager._mainWin = true;
-                //WindowManager._mainWindow.Show();
-                MainWindow mw = new MainWindow();
-                mw.Show();
+                WindowManager._mainWindow = new MainWindow();
+                WindowManager._mainWindow.Show();
+                WindowManager._mainWin= true;
             }
             else
             {
-                WindowManager._mainWindow.Focus();
-                WindowManager._gameWindow.Close();
+                WindowManager._mainWindow = new MainWindow();
+                WindowManager._mainWindow.Show();
             }
+
+            this.Close();
         }
 
         private void StartGame()

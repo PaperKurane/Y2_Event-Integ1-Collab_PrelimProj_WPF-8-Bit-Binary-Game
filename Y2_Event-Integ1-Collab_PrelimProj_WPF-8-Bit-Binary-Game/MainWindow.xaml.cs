@@ -36,11 +36,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
         {
             if (!WindowManager._gameWin)
             {
-                WindowManager._gameWindow = new GameWindow();
-                WindowManager._gameWin = true;
-                WindowManager._gameWindow.Show();
-                //this.Hide();
-                WindowManager._mainWindow.Close();
+                DifficultySelect();
             }
             else
             {
@@ -48,12 +44,31 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             }
         }
 
-        private void Window_Closed(object sender, EventArgs e)
+        private void DifficultySelect()
         {
+            btnStart.Visibility = Visibility.Collapsed;
+            btnInstructions.Visibility = Visibility.Collapsed;
+            btnQuitGame.Visibility = Visibility.Collapsed;
 
+
+
+            WindowManager._gameWindow = new GameWindow();
+            WindowManager._gameWin = true;
+            WindowManager._mainWin = false;
+            WindowManager._gameWindow.Show();
+            this.Close();
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            btnBack.Visibility = Visibility.Collapsed;
+
+            btnStart.Visibility = Visibility.Visible;
+            btnInstructions.Visibility = Visibility.Visible;
+            btnQuitGame.Visibility = Visibility.Visible;
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) // Do these even do anything
         {
             //Window1 w1 = new Window1();
             //w1.Show();
@@ -63,7 +78,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 
         private void btnQuitGame_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            this.Close();
         }
     }
 }

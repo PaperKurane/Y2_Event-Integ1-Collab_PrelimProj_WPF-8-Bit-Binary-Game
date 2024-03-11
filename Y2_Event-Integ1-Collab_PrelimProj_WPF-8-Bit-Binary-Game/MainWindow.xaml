@@ -32,9 +32,12 @@
             </Image.Triggers>
         </Image>
 
-        <Button x:Name="btnStart" Content="Start" HorizontalContentAlignment="Center" FontSize="34" Margin="339,204,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="104" FontFamily="Segoe UI Semibold" FontWeight="Bold" Click="btnStart_Click"/>
-        <Button x:Name="btnInstructions" Content="How to Play" HorizontalContentAlignment="Center" FontSize="34" Margin="282,266,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="218" FontFamily="Segoe UI Semibold" FontWeight="Bold"/>
-        <Button x:Name="btnQuitGame" Content="Quit" HorizontalContentAlignment="Center" FontSize="34" Margin="344,328,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="94" FontFamily="Segoe UI Semibold" FontWeight="Bold" Click="btnQuitGame_Click"/>
+        <Button x:Name="btnStart" Visibility="Visible" Content="Start" HorizontalContentAlignment="Center" FontSize="34" Margin="339,204,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="104" FontFamily="Segoe UI Semibold" FontWeight="Bold" Click="btnStart_Click"/>
+        <Button x:Name="btnInstructions" Visibility="Visible" Content="How to Play" HorizontalContentAlignment="Center" FontSize="34" Margin="282,266,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="218" FontFamily="Segoe UI Semibold" FontWeight="Bold"/>
+        <Button x:Name="btnQuitGame" Visibility="Visible" Content="Quit" HorizontalContentAlignment="Center" FontSize="34" Margin="344,328,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="94" FontFamily="Segoe UI Semibold" FontWeight="Bold" Click="btnQuitGame_Click"/>
+
+        <Button x:Name="btnContinue" Visibility="Collapsed" Content="Continue" HorizontalContentAlignment="Center" FontSize="34" Margin="594,266,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="157" FontFamily="Segoe UI Semibold" FontWeight="Bold" Click="btnStart_Click"/>
+        <Button x:Name="btnBack" Visibility="Collapsed" Content="Back" HorizontalContentAlignment="Center" FontSize="34" Margin="657,328,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="94" FontFamily="Segoe UI Semibold" FontWeight="Bold" Click="btnBack_Click"/>
 
     </Grid>
 </Window>
