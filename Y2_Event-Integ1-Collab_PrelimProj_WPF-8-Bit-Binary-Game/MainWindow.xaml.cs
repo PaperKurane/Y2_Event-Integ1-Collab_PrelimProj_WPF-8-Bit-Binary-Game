@@ -20,11 +20,12 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
     /// </summary>
     public partial class MainWindow : Window
     {
-        //Window1 w1 = new Window1();
-        //Window1 w2 = new Window1("Hello world");
+        private string _difficulty = null;
+
         public MainWindow()
         {
             InitializeComponent();
+
             if (!WindowManager._mainWin)
             {
                 WindowManager._mainWindow = this;
@@ -50,13 +51,44 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             btnInstructions.Visibility = Visibility.Collapsed;
             btnQuitGame.Visibility = Visibility.Collapsed;
 
+            rbEasy.Visibility = Visibility.Visible;
+            rbMedium.Visibility = Visibility.Visible;
+            rbHard.Visibility = Visibility.Visible;
 
+            lbDifficultyLabel.Visibility = Visibility.Visible;
+            tbDifficultyDesc.Visibility = Visibility.Visible;
 
-            WindowManager._gameWindow = new GameWindow();
+            btnContinue.Visibility = Visibility.Visible;
+            btnBack.Visibility = Visibility.Visible;
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            string rbName = ((RadioButton)sender).Name.ToString();
+
+            switch (rbName)
+            {
+                case "rbEasy":
+                    tbDifficultyDesc.Text = "Easy Mode&#x0a;- The easiest mode.&#x0a;- Timer: 60 Seconds&#x0a;- Chill, easy gameplay.";
+                    _difficulty = "Easy";
+                    break;
+                case "rbMedium":
+                    tbDifficultyDesc.Text = "Medium Mode&#x0a;- The standard mode.&#x0a;- Timer: 45 Seconds&#x0a;- The intended experience.";
+                    _difficulty = "Medium";
+                    break;
+                case "rbHard":
+                    tbDifficultyDesc.Text = "Hard Mode&#x0a;- May or may not be fun.&#x0a;- Timer: 30 Seconds&#x0a;- Binary labels are removed.";
+                    _difficulty = "Hard";
+                    break;
+            }
+        }
+
+        private void btnContinue_Click(object sender, RoutedEventArgs e)
+        {
+            WindowManager._gameWindow = new GameWindow(_difficulty); // Make this a constructor
             WindowManager._gameWin = true;
-            WindowManager._mainWin = false;
             WindowManager._gameWindow.Show();
-            this.Close();
+            WindowManager._mainWindow.Close();
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
@@ -66,14 +98,20 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             btnStart.Visibility = Visibility.Visible;
             btnInstructions.Visibility = Visibility.Visible;
             btnQuitGame.Visibility = Visibility.Visible;
+
+            rbEasy.Visibility = Visibility.Collapsed;
+            rbMedium.Visibility = Visibility.Collapsed;
+            rbHard.Visibility = Visibility.Collapsed;
+
+            lbDifficultyLabel.Visibility = Visibility.Collapsed;
+            tbDifficultyDesc.Visibility = Visibility.Collapsed;
+
+            btnContinue.Visibility = Visibility.Collapsed;
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) // Do these even do anything
         {
-            //Window1 w1 = new Window1();
-            //w1.Show();
-
-            WindowManager._mainWin = false;
+            MessageBox.Show("Main Manu Window is Closed");
         }
 
         private void btnQuitGame_Click(object sender, RoutedEventArgs e)
