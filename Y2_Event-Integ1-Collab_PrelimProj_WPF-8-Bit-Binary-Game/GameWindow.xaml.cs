@@ -98,16 +98,47 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             {
                 case "Easy":
                     _timeLeftInMilliseconds = 1000 * 60;
+                    DecimalChances(difficulty);
                     break;
                 case "Medium":
                     _timeLeftInMilliseconds = 1000 * 45;
+                    DecimalChances(difficulty);
                     break;
                 case "Hard":
                     _timeLeftInMilliseconds = 1000 * 30;
+                    DecimalChances(difficulty);
                     break;
             }
 
             tbDecimalDisplay.Text = _rnd.Next(0, 256) + "";
+        }
+
+        private void DecimalChances(string difficulty)
+        {
+            if (difficulty == "Easy")
+            {
+                List<int> easyNums = new List<int> { 15, 25, 35, 45, 55, 65, 75, 85, 96, 135 };
+
+                for (int x = 1; x < 256; x++)
+                {
+                    if (x % 2 == 0)
+                        easyNums.Add(x);
+                }
+
+                tbDecimalDisplay.Text = ;
+            }
+            else if (difficulty == "Hard")
+            {
+                List<int> hardNums = new List<int> { 47, 91, 167, 189, 201, 226, 249 };
+
+                if (_rnd.Next(0, 5) == 1) // 25% chance for one of these numbers to appear
+                {
+
+                }
+            }
+
+
+
         }
 
         private void ResetGame()
