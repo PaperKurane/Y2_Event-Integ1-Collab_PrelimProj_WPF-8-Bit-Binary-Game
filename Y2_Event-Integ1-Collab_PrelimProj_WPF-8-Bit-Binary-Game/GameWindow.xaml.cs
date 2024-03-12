@@ -93,6 +93,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 
         private void DifficultySetter(string difficulty)
         {
+            // Easy difficulty give higher chance for easier numbers, medium keep is normal, hard is higher chance for harder nums and remove the labels
             switch (difficulty)
             {
                 case "Easy":
