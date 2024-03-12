@@ -223,7 +223,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             if (remainingMilliseconds <= 0)
             {
                 _dt.Stop();
-                checkWin();
+                AnswerParser();
             }
         }
 
@@ -246,45 +246,48 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             if (_gameRestart)
                 ResetGame();
             else
+                AnswerParser();
+        }
+
+        private void AnswerParser()
+        {
+            if (checkWin())
             {
-                if (checkWin())
-                {
-                    _dt.Stop();
+                _dt.Stop();
 
-                    lbStatusHandler(1);
+                lbStatusHandler(1);
 
-                    TimeReductionLogic();
-                    pbTimer1.Value = 0;
-                    pbTimer2.Value = 0;
+                TimeReductionLogic();
+                pbTimer1.Value = 0;
+                pbTimer2.Value = 0;
 
-                    _currentLevel++;
-                    tbLevelDisplay.Text = "Level: " + _currentLevel;
-                    _userScore++;
-                    tbScoreDisplay.Text = "Score: " + _userScore;
+                _currentLevel++;
+                tbLevelDisplay.Text = "Level: " + _currentLevel;
+                _userScore++;
+                tbScoreDisplay.Text = "Score: " + _userScore;
 
-                    DecimalChances();
+                DecimalChances();
 
-                    TimerStart();
-                    ResetAllBinaryButtons();
-                }
-                else
-                {
-                    _dt.Stop();
+                TimerStart();
+                ResetAllBinaryButtons();
+            }
+            else
+            {
+                _dt.Stop();
 
-                    lbStatusHandler(2);
+                lbStatusHandler(2);
 
-                    _userScore = 0;
-                    tbScoreDisplay.Text = "Score: " + _userScore;
+                _userScore = 0;
+                tbScoreDisplay.Text = "Score: " + _userScore;
 
-                    btnSubmit.Margin = new Thickness(403, 342, 0, 0);
-                    btnSubmit.Width = 255;
-                    btnSubmit.HorizontalAlignment = HorizontalAlignment.Left;
-                    btnSubmit.Content = "Try Again";
+                btnSubmit.Margin = new Thickness(403, 342, 0, 0);
+                btnSubmit.Width = 255;
+                btnSubmit.HorizontalAlignment = HorizontalAlignment.Left;
+                btnSubmit.Content = "Try Again";
 
-                    btnExit.Visibility = Visibility.Visible;
+                btnExit.Visibility = Visibility.Visible;
 
-                    _gameRestart = true;
-                }
+                _gameRestart = true;
             }
         }
 
