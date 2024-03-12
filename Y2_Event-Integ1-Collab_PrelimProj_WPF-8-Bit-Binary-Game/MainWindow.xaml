@@ -23,8 +23,8 @@
                     <BeginStoryboard>
                         <Storyboard RepeatBehavior="Forever">
                             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)">
-                                <DiscreteDoubleKeyFrame KeyTime="0:0:1" Value="-10"/>
-                                <DiscreteDoubleKeyFrame KeyTime="0:0:2" Value="0"/>
+                                <DiscreteDoubleKeyFrame KeyTime="0:0:0.4" Value="-10"/>
+                                <DiscreteDoubleKeyFrame KeyTime="0:0:0.8" Value="0"/>
                             </DoubleAnimationUsingKeyFrames>
                         </Storyboard>
                     </BeginStoryboard>

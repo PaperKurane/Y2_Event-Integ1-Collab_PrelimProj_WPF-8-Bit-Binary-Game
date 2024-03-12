@@ -231,7 +231,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 
                     lbStatusHandler(1);
 
-                    _timeLeftInMilliseconds = 1000 * 60;
+                    _timeLeftInMilliseconds = 1000 * 60; // Maybe put the reduction logic here
                     pbTimer1.Value = 0;
                     pbTimer2.Value = 0;
 
@@ -240,7 +240,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
                     _userScore++;
                     tbScoreDisplay.Text = "Score: " + _userScore;
 
-                    tbDecimalDisplay.Text = _rnd.Next(0, 255) + "";
+                    tbDecimalDisplay.Text = _rnd.Next(0, 255) + ""; // Get rid of this shit
 
                     TimerStart();
                     ResetAllBinaryButtons();
