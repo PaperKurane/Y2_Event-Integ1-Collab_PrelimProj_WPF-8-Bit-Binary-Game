@@ -65,7 +65,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
             string rbName = ((RadioButton)sender).Name.ToString();
-
+            
             switch (rbName)
             {
                 case "rbEasy":
