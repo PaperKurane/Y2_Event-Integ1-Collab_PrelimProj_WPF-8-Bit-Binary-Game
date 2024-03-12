@@ -24,8 +24,9 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
         DispatcherTimer _dt = null;
         Random _rnd = new Random();
         double _timeLeftInMilliseconds = 0;
-        bool _timer = true; // TRUE TEMPORARILY, CHANGE LATER
+        //bool _timer = true; // TRUE TEMPORARILY, CHANGE LATER
 
+        string _difficulty = "Medium";
         int _currentLevel = 1;
         int _userScore = 0;
 
@@ -48,13 +49,15 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
         {
             InitializeComponent();
 
+            _difficulty = difficulty;
+
             if (!WindowManager._mainWin)
             {
                 WindowManager._gameWindow = this;
                 WindowManager._gameWin = true;
             }
 
-            StartGame(difficulty);
+            StartGame();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) // Do these even do anything
@@ -82,38 +85,38 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             this.Close();
         }
 
-        private void StartGame(string difficulty = "Medium")
+        private void StartGame()
         {
             btnSubmit.Visibility = Visibility.Collapsed;
             pbTimer1.Visibility = Visibility.Collapsed;
             pbTimer2.Visibility = Visibility.Collapsed;
 
-            DifficultySetter(difficulty);
+            DifficultySetter();
         }
 
-        private void DifficultySetter(string difficulty)
+        private void DifficultySetter()
         {
             // Easy difficulty give higher chance for easier numbers, medium keep is normal, hard is higher chance for harder nums and remove the labels
-            switch (difficulty)
+            switch (_difficulty)
             {
                 case "Easy":
                     _timeLeftInMilliseconds = 1000 * 60;
-                    DecimalChances(difficulty);
+                    DecimalChances();
                     break;
                 case "Medium":
                     _timeLeftInMilliseconds = 1000 * 45;
-                    DecimalChances(difficulty);
+                    DecimalChances();
                     break;
                 case "Hard":
                     _timeLeftInMilliseconds = 1000 * 30;
-                    DecimalChances(difficulty);
+                    DecimalChances();
                     break;
             }
         }
 
-        private void DecimalChances(string difficulty)
+        private void DecimalChances()
         {
-            switch (difficulty)
+            switch (_difficulty)
             {
                 case "Easy":
                     List<int> easyNums = new List<int> { 15, 25, 35, 45, 55, 65, 75, 85, 96, 135 };
@@ -148,7 +151,8 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
         private void ResetGame()
         {
             lbStatusHandler(3);
-            tbDecimalDisplay.Text = _rnd.Next(0, 256) + ""; // Change this to DifficultySetter Methinks
+
+            DecimalChances();
 
             ResetAllBinaryButtons();
 
@@ -203,19 +207,16 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 
         private void _dt_Tick(object sender, EventArgs e)
         {
-            if (_timer == true)
+            TimeSpan elapsedtime = DateTime.Now - startTime;
+            double remainingMilliseconds = _timeLeftInMilliseconds - elapsedtime.TotalMilliseconds;
+
+            pbTimer1.Value = (remainingMilliseconds / _timeLeftInMilliseconds) * 100;
+            pbTimer2.Value = 100 - pbTimer1.Value;
+
+            if (remainingMilliseconds <= 0)
             {
-                TimeSpan elapsedtime = DateTime.Now - startTime;
-                double remainingMilliseconds = _timeLeftInMilliseconds - elapsedtime.TotalMilliseconds;
-
-                pbTimer1.Value = (remainingMilliseconds / _timeLeftInMilliseconds) * 100;
-                pbTimer2.Value = 100 - pbTimer1.Value;
-
-                if (remainingMilliseconds <= 0)
-                {
-                    _dt.Stop();
-                    checkWin();
-                }
+                _dt.Stop();
+                checkWin();
             }
         }
 
@@ -231,7 +232,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 
                     lbStatusHandler(1);
 
-                    _timeLeftInMilliseconds = 1000 * 60; // Maybe put the reduction logic here
+                    //_timeLeftInMilliseconds = 1000 * 60; // Maybe put the reduction logic here
                     pbTimer1.Value = 0;
                     pbTimer2.Value = 0;
 
@@ -240,7 +241,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
                     _userScore++;
                     tbScoreDisplay.Text = "Score: " + _userScore;
 
-                    tbDecimalDisplay.Text = _rnd.Next(0, 255) + ""; // Get rid of this shit
+                    DecimalChances();
 
                     TimerStart();
                     ResetAllBinaryButtons();
