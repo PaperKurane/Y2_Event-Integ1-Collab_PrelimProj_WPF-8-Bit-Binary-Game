@@ -32,6 +32,8 @@
         <Label x:Name="lbStatus" Content="Good luck!" HorizontalContentAlignment="Center" FontSize="32" FontWeight="Bold" Margin="0,124,0,0" VerticalAlignment="Top" Width="800" Foreground="White" HorizontalAlignment="Center"/>
         <!--#endregion-->
 
+        <Image x:Name="imgCautionBlocker" Visibility="Collapsed" HorizontalAlignment="Left" Height="32" Margin="142,231,0,0" VerticalAlignment="Top" Width="516" Source="/CautionBlocker.png"/>
+
         <!--#region Buttons-->
         <Button x:Name="btnBinary128" Content="0" Margin="142,264,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="70" Width="60" FontSize="38" FontWeight="Normal" Background="White" Click="btnBinaryClick"/>
         <Button x:Name="btnBinary64" Content="0" Margin="208,264,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="70" Width="60" FontSize="38" FontWeight="Normal" Background="White" Click="btnBinaryClick"/>
@@ -51,6 +53,7 @@
 
         <TextBox x:Name="tbScoreDisplay" Text="Score: 0" VerticalAlignment="Top" Margin="628,24,0,0" TextWrapping="Wrap" TextAlignment="Center" Height="38" BorderBrush="Black" FontSize="20" VerticalContentAlignment="Center" IsReadOnly="True" HorizontalAlignment="Left" Width="130"/>
         <TextBox x:Name="tbLevelDisplay" Text="Level 1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="27,24,0,0" TextWrapping="Wrap" TextAlignment="Center" Width="130" Height="38" BorderBrush="Black" FontSize="20" VerticalContentAlignment="Center" IsReadOnly="True"/>
+        <TextBox x:Name="tbTimerDisplay" Text="00" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="706,65,0,0" TextWrapping="Wrap" TextAlignment="Center" Width="52" Height="38" BorderBrush="Black" FontSize="24" VerticalContentAlignment="Center" IsReadOnly="True"/>
 
         <!--#region ProgressBars-->
         <ProgressBar x:Name="pbTimer1" HorizontalAlignment="Left" Height="15" Margin="400,183,0,0" VerticalAlignment="Top" Width="360" Foreground="#FFFFC107" Background="#3F51B5" BorderBrush="Transparent" FlowDirection="LeftToRight"/>

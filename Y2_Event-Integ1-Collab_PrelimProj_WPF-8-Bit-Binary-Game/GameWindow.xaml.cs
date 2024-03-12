@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -109,6 +110,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
                     break;
                 case "Hard":
                     _timeLeftInMilliseconds = 1000 * 30;
+                    imgCautionBlocker.Visibility = Visibility.Visible;
                     DecimalChances();
                     break;
             }
@@ -150,9 +152,12 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 
         private void ResetGame()
         {
-            lbStatusHandler(3);
+            imgCautionBlocker.Visibility = Visibility.Collapsed;
 
-            DecimalChances();
+            if (_gameRestart == true)
+                DifficultySetter();
+
+            lbStatusHandler(3);
 
             ResetAllBinaryButtons();
 
@@ -210,6 +215,8 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             TimeSpan elapsedtime = DateTime.Now - startTime;
             double remainingMilliseconds = _timeLeftInMilliseconds - elapsedtime.TotalMilliseconds;
 
+            tbTimerDisplay.Text = ((int)(remainingMilliseconds / 1000)).ToString("F0");
+
             pbTimer1.Value = (remainingMilliseconds / _timeLeftInMilliseconds) * 100;
             pbTimer2.Value = 100 - pbTimer1.Value;
 
@@ -217,6 +224,20 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             {
                 _dt.Stop();
                 checkWin();
+            }
+        }
+
+        private void TimeReductionLogic()
+        {
+            if (_currentLevel < 12)
+            {
+                if (_currentLevel != 1)
+                {
+                    double currSeconds = _timeLeftInMilliseconds / 1000;
+                    double newSeconds = Math.Round(currSeconds * 0.06);
+                    newSeconds = currSeconds - newSeconds;
+                    _timeLeftInMilliseconds = 1000 * newSeconds;
+                }
             }
         }
 
@@ -232,7 +253,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 
                     lbStatusHandler(1);
 
-                    //_timeLeftInMilliseconds = 1000 * 60; // Maybe put the reduction logic here
+                    TimeReductionLogic();
                     pbTimer1.Value = 0;
                     pbTimer2.Value = 0;
 

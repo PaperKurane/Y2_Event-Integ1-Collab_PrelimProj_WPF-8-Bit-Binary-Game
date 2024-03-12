@@ -109,5 +109,8 @@
   <ItemGroup>
     <Resource Include="Bit Masters Logo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="CautionBlocker.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
