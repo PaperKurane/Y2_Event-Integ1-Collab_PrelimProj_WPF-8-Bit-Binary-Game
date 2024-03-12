@@ -69,15 +69,15 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             switch (rbName)
             {
                 case "rbEasy":
-                    tbDifficultyDesc.Text = "Easy Mode&#x0a;- The easiest mode.&#x0a;- Timer: 60 Seconds&#x0a;- Chill, easy gameplay.";
+                    tbDifficultyDesc.Text = "Easy Mode\n- Chill, easy gameplay\n- Timer: 60 Seconds\n- Placeholder";
                     _difficulty = "Easy";
                     break;
                 case "rbMedium":
-                    tbDifficultyDesc.Text = "Medium Mode&#x0a;- The standard mode.&#x0a;- Timer: 45 Seconds&#x0a;- The intended experience.";
+                    tbDifficultyDesc.Text = "Medium Mode\n- The intended experience.\n- Timer: 45 Seconds\n- Placeholder";
                     _difficulty = "Medium";
                     break;
                 case "rbHard":
-                    tbDifficultyDesc.Text = "Hard Mode&#x0a;- May or may not be fun.&#x0a;- Timer: 30 Seconds&#x0a;- Binary labels are removed.";
+                    tbDifficultyDesc.Text = "Hard Mode\n- May or may not be fun.\n- Timer: 30 Seconds\n- Binary labels are removed.";
                     _difficulty = "Hard";
                     break;
             }
