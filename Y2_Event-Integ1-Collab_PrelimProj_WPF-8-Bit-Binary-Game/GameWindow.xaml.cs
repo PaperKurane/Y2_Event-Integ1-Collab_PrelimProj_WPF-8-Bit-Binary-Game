@@ -109,36 +109,40 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
                     DecimalChances(difficulty);
                     break;
             }
-
-            tbDecimalDisplay.Text = _rnd.Next(0, 256) + "";
         }
 
         private void DecimalChances(string difficulty)
         {
-            if (difficulty == "Easy")
+            switch (difficulty)
             {
-                List<int> easyNums = new List<int> { 15, 25, 35, 45, 55, 65, 75, 85, 96, 135 };
+                case "Easy":
+                    List<int> easyNums = new List<int> { 15, 25, 35, 45, 55, 65, 75, 85, 96, 135 };
 
-                for (int x = 1; x < 256; x++)
-                {
-                    if (x % 2 == 0)
-                        easyNums.Add(x);
-                }
+                    for (int x = 1; x < 256; x++)
+                    {
+                        if (x % 2 == 0)
+                            easyNums.Add(x);
+                    }
 
-                tbDecimalDisplay.Text = ;
+                    if (_rnd.Next(0, 3) == 1) // 50% chance for one of these numbers to appear
+                        tbDecimalDisplay.Text = easyNums[_rnd.Next(0, easyNums.Count)].ToString();
+                    else
+                        tbDecimalDisplay.Text = _rnd.Next(0, 256).ToString();
+                    break;
+
+                case "Hard":
+                    List<int> hardNums = new List<int> { 47, 91, 167, 189, 201, 226, 249 };
+
+                    if (_rnd.Next(0, 5) == 1) // 25% chance for one of these numbers to appear
+                        tbDecimalDisplay.Text = hardNums[_rnd.Next(0, hardNums.Count)].ToString();
+                    else
+                        tbDecimalDisplay.Text = _rnd.Next(0, 256).ToString();
+                    break;
+
+                default:
+                    tbDecimalDisplay.Text = _rnd.Next(0, 256).ToString();
+                    break;
             }
-            else if (difficulty == "Hard")
-            {
-                List<int> hardNums = new List<int> { 47, 91, 167, 189, 201, 226, 249 };
-
-                if (_rnd.Next(0, 5) == 1) // 25% chance for one of these numbers to appear
-                {
-
-                }
-            }
-
-
-
         }
 
         private void ResetGame()
