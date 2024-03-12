@@ -56,7 +56,7 @@
         <TextBox x:Name="tbTimerDisplay" Text="00" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="706,65,0,0" TextWrapping="Wrap" TextAlignment="Center" Width="52" Height="38" BorderBrush="Black" FontSize="24" VerticalContentAlignment="Center" IsReadOnly="True"/>
 
         <!--#region ProgressBars-->
-        <ProgressBar x:Name="pbTimer1" HorizontalAlignment="Left" Height="15" Margin="394,183,0,0" VerticalAlignment="Top" Width="360" Foreground="#FFFFC107" Background="#3F51B5" BorderBrush="Transparent" FlowDirection="LeftToRight"/>
+        <ProgressBar x:Name="pbTimer1" HorizontalAlignment="Left" Height="15" Margin="393,183,0,0" VerticalAlignment="Top" Width="360" Foreground="#FFFFC107" Background="#3F51B5" BorderBrush="Transparent" FlowDirection="LeftToRight"/>
         <ProgressBar x:Name="pbTimer2" Height="17" Margin="34,182,0,0" VerticalAlignment="Top" Foreground="#3F51B5" Background="#FFFFC107" BorderBrush="Transparent" FlowDirection="RightToLeft" RenderTransformOrigin="0.5,0.5" OpacityMask="#FF3F51B5" HorizontalAlignment="Left" Width="360">
             <ProgressBar.RenderTransform>
                 <TransformGroup>
