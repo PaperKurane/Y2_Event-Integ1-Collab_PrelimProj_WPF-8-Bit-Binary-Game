@@ -69,15 +69,15 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             switch (rbName)
             {
                 case "rbEasy":
-                    tbDifficultyDesc.Text = "Easy Mode\n- Chill, easy gameplay\n- Timer: 60 Seconds\n- Placeholder";
+                    tbDifficultyDesc.Text = "Easy Mode\n- Chill, easy gameplay\n- Timer: 60 Seconds\n- Higher chance for easier numbers to appear.";
                     _difficulty = "Easy";
                     break;
                 case "rbMedium":
-                    tbDifficultyDesc.Text = "Medium Mode\n- The intended experience.\n- Timer: 45 Seconds\n- Placeholder";
+                    tbDifficultyDesc.Text = "Medium Mode\n- The intended experience.\n- Timer: 45 Seconds";
                     _difficulty = "Medium";
                     break;
                 case "rbHard":
-                    tbDifficultyDesc.Text = "Hard Mode\n- May or may not be fun.\n- Timer: 30 Seconds\n- Binary labels are removed.";
+                    tbDifficultyDesc.Text = "Hard Mode\n- May or may not be fun.\n- Timer: 30 Seconds\n- Binary labels are removed.\n- Harder numbers.";
                     _difficulty = "Hard";
                     break;
             }
@@ -85,9 +85,11 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 
         private void btnContinue_Click(object sender, RoutedEventArgs e)
         {
-            WindowManager._gameWindow = new GameWindow(_difficulty); // Make this a constructor
-            WindowManager._gameWin = true;
+            WindowManager._mainWin = false;
+
+            WindowManager._gameWindow = new GameWindow(_difficulty);
             WindowManager._gameWindow.Show();
+
             WindowManager._mainWindow.Close();
         }
 

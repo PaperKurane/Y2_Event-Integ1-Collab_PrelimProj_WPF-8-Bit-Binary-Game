@@ -23,7 +23,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
         DateTime startTime;
         DispatcherTimer _dt = null;
         Random _rnd = new Random();
-        double _timeLeftInMilliseconds = 1000 * 60; // 1000 * Time in seconds
+        double _timeLeftInMilliseconds = 0;
         bool _timer = true; // TRUE TEMPORARILY, CHANGE LATER
 
         int _currentLevel = 1;
@@ -54,7 +54,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
                 WindowManager._gameWin = true;
             }
 
-            StartGame();
+            StartGame(difficulty);
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) // Do these even do anything
@@ -82,11 +82,29 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             this.Close();
         }
 
-        private void StartGame()
+        private void StartGame(string difficulty = "Medium")
         {
             btnSubmit.Visibility = Visibility.Collapsed;
             pbTimer1.Visibility = Visibility.Collapsed;
             pbTimer2.Visibility = Visibility.Collapsed;
+
+            DifficultySetter(difficulty);
+        }
+
+        private void DifficultySetter(string difficulty)
+        {
+            switch (difficulty)
+            {
+                case "Easy":
+                    _timeLeftInMilliseconds = 1000 * 60;
+                    break;
+                case "Medium":
+                    _timeLeftInMilliseconds = 1000 * 45;
+                    break;
+                case "Hard":
+                    _timeLeftInMilliseconds = 1000 * 30;
+                    break;
+            }
 
             tbDecimalDisplay.Text = _rnd.Next(0, 256) + "";
         }
@@ -94,7 +112,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
         private void ResetGame()
         {
             lbStatusHandler(3);
-            tbDecimalDisplay.Text = _rnd.Next(0, 256) + "";
+            tbDecimalDisplay.Text = _rnd.Next(0, 256) + ""; // Change this to DifficultySetter Methinks
 
             ResetAllBinaryButtons();
 
@@ -137,6 +155,16 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             TimerStart();
         }
 
+        private void TimerStart()
+        {
+            startTime = DateTime.Now;
+
+            _dt = new DispatcherTimer();
+            _dt.Interval = new TimeSpan(0, 0, 0, 0, 50);
+            _dt.Tick += _dt_Tick;
+            _dt.Start();
+        }
+
         private void _dt_Tick(object sender, EventArgs e)
         {
             if (_timer == true)
@@ -153,16 +181,6 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
                     checkWin();
                 }
             }
-        }
-
-        private void TimerStart()
-        {
-            startTime = DateTime.Now;
-
-            _dt = new DispatcherTimer();
-            _dt.Interval = new TimeSpan(0, 0, 0, 0, 50);
-            _dt.Tick += _dt_Tick;
-            _dt.Start();
         }
 
         private void btnSubmit_Click(object sender, RoutedEventArgs e)
