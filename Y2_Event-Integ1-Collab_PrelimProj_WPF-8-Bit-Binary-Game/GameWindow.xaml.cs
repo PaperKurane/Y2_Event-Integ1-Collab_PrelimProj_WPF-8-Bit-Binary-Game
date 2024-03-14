@@ -18,6 +18,8 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 {
     /// <summary>
     /// Interaction logic for GameWindow.xaml
+    /// 
+    /// dOES SIR CONSIDER MUTING AN OPTION
     /// </summary>
     public partial class GameWindow : Window
     {
@@ -25,7 +27,6 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
         DispatcherTimer _dt = null;
         Random _rnd = new Random();
         double _timeLeftInMilliseconds = 0;
-        //bool _timer = true; // TRUE TEMPORARILY, CHANGE LATER
 
         string _difficulty = "Medium";
         int _currentLevel = 1;
@@ -59,11 +60,6 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             }
 
             StartGame();
-        }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) // Do these even do anything
-        {
-            MessageBox.Show("Game Window is Closed");
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
@@ -267,8 +263,8 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 
                 DecimalChances();
 
-                TimerStart();
                 ResetAllBinaryButtons();
+                TimerStart();
             }
             else
             {
@@ -276,10 +272,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 
                 lbStatusHandler(2);
 
-                _userScore = 0;
-                tbScoreDisplay.Text = "Score: " + _userScore;
-
-                btnSubmit.Margin = new Thickness(403, 342, 0, 0);
+                btnSubmit.Margin = new Thickness(395, 342, 0, 0);
                 btnSubmit.Width = 255;
                 btnSubmit.HorizontalAlignment = HorizontalAlignment.Left;
                 btnSubmit.Content = "Try Again";
@@ -292,8 +285,6 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 
         private void lbStatusHandler(int mode)
         {
-            // Input 1, 2, 3 for mode, int mode, switch case for numbers
-
             string[] winMsg = new string[] { "Wow. Great Job!", "Masterfully done.", "Good Work!", "Your intelligence scares me.", "You did better than I thought!", "Wow that's crazy!", "Lets GOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO" };
             string[] loseMsg = new string[] { "Terrible. I overestimated you.", "What was that?", "You're actually throwing", "Nah aint no way you did that", "Try being better", "Skill Issue", "Are you even trying?" };
             string[] gameMsg = new string[] { "I believe in you.", "You got this!", "Keep going!" };
@@ -337,8 +328,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 
             if (total == goal)
                 return true;
-            else // If wrong answer: Margin="403,342,0,0" Width="255" HorizontalAlignment="Left"
-                 // If right answer: Margin="142,342,0,0" Width="516" HorizontalAlignment="Left"
+            else
                 return false;
         }
 

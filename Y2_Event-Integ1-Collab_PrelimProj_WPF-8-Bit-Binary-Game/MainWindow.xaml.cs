@@ -111,11 +111,6 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             btnContinue.Visibility = Visibility.Collapsed;
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e) // Do these even do anything
-        {
-            MessageBox.Show("Main Manu Window is Closed");
-        }
-
         private void btnQuitGame_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
