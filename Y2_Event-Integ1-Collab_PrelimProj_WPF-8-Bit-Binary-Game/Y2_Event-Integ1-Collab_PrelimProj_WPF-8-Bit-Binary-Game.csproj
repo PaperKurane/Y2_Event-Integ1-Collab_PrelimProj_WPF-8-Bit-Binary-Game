@@ -55,15 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="LeaderboardWindow.xaml.cs">
-      <DependentUpon>LeaderboardWindow.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="LeaderboardManager.cs" />
     <Compile Include="WindowManager.cs" />
     <Page Include="GameWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="LeaderboardWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

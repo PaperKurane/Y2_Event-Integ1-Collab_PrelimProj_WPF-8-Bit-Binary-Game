@@ -10,10 +10,8 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
     {
         public static MainWindow _mainWindow = null;
         public static GameWindow _gameWindow = null;
-        public static LeaderboardWindow _leadWindow = null;
 
         public static bool _mainWin = false;
         public static bool _gameWin = false;
-        public static bool _leadWin = false;
     }
 }
