@@ -113,5 +113,8 @@
   <ItemGroup>
     <Resource Include="CautionBlocker.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Leaderboard.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

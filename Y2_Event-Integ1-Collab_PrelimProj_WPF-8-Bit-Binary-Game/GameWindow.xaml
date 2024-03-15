@@ -70,7 +70,7 @@
         <!--#endregion-->
 
         <Button x:Name="btnMega" Content="Click Anywhere to Continue..." Background="#FF3F51B5" Height="410" VerticalAlignment="Top" FontSize="48" FontWeight="Bold" Click="btnMega_Click" Foreground="White"
-                Visibility="Visible" Margin="0,1,0,0" HorizontalAlignment="Left" Width="784">
+                Visibility="Collapsed" Margin="0,1,0,0" HorizontalAlignment="Left" Width="784">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">

@@ -60,6 +60,10 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 
             btnContinue.Visibility = Visibility.Visible;
             btnBack.Visibility = Visibility.Visible;
+
+            lbVersionNum.Visibility = Visibility.Collapsed;
+            lbCopyright.Visibility = Visibility.Collapsed;
+            btnLeaderboard.Visibility = Visibility.Collapsed;
         }
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
@@ -109,11 +113,42 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             tbDifficultyDesc.Visibility = Visibility.Collapsed;
 
             btnContinue.Visibility = Visibility.Collapsed;
+
+            lbVersionNum.Visibility = Visibility.Visible;
+            lbCopyright.Visibility = Visibility.Visible;
+            btnLeaderboard.Visibility = Visibility.Visible;
         }
 
         private void btnQuitGame_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        // Leaderboard Section
+
+        private void btnLeaderboard_MouseEnter(object sender, MouseEventArgs e)
+        {
+            lbLdrBrdName.Visibility = Visibility.Visible;
+        }
+
+        private void btnLeaderboard_MouseLeave(object sender, MouseEventArgs e)
+        {
+            lbLdrBrdName.Visibility = Visibility.Collapsed;
+        }
+
+        private void btnLeaderboard_Click(object sender, RoutedEventArgs e)
+        {
+            gMain.Visibility = Visibility.Collapsed;
+        }
+
+        private void btnLdrBrdBack_Click(object sender, RoutedEventArgs e)
+        {
+            gMain.Visibility = Visibility.Visible;
+        }
+
+        private void RadioButtonLeaderboard_Checked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
