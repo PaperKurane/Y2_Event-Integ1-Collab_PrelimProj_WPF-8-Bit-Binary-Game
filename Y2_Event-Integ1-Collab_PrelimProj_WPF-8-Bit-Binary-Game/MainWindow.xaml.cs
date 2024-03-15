@@ -21,6 +21,9 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
     public partial class MainWindow : Window
     {
         private string _difficulty = null;
+        private Dictionary<string, string[]> _userDataEasy = new Dictionary<string, string[]>();
+        private Dictionary<string, string[]> _userDataMedium = new Dictionary<string, string[]>();
+        private Dictionary<string, string[]> _userDataHard = new Dictionary<string, string[]>();
 
         public MainWindow()
         {
@@ -49,13 +52,9 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
             if (!WindowManager._gameWin)
-            {
                 DifficultySelect();
-            }
             else
-            {
                 WindowManager._gameWindow.Focus();
-            }
         }
 
         private void DifficultySelect()
@@ -137,7 +136,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             this.Close();
         }
 
-        // Leaderboard Section
+        #region Leaderboard Section
 
         private void btnLeaderboard_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -161,12 +160,32 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 
         private void LeaderBoardHandler(string userName, string userTime, int userScore)
         {
-
+            switch (_difficulty)
+            {
+                case "Easy":
+                    _userDataEasy[userName] = new string[] {userTime, userScore.ToString()};
+                    break;
+                case "Medium":
+                    _userDataMedium[userName] = new string[] {userTime, userScore.ToString()};
+                    break;
+                case "Hard":
+                    _userDataMedium[userName] = new string[] {userTime, userScore.ToString()};
+                    break;
+            }
         }
 
         private void RadioButtonLeaderboard_Checked(object sender, RoutedEventArgs e)
         {
-
+            switch (_difficulty)
+            {
+                case "Easy":
+                    break;
+                case "Medium":
+                    break;
+                case "Hard":
+                    break;
+            }
         }
+        #endregion
     }
 }

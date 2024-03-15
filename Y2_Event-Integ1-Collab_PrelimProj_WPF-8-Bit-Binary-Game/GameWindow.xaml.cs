@@ -84,14 +84,14 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
                 WindowManager._gameWindow.Close();
             }
 
-            this.Close();
+            //this.Close();
         }
         
         private void UserDetails()
         {
             _timeSpent = DateTime.Now - _startTime;
 
-            lbTime.Content = "Time: " + _timeSpent.ToString(@"hh\\:nn\\:ss");
+            lbTime.Content = "Time: " + _timeSpent.ToString(@"hh\:mm\:ss");
             lbScore.Content = "Score: " + _userScore;
         }
 
@@ -415,22 +415,22 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
         {
             if (tbUsername.Text.Length > 25)
             {
-                tbUsername.IsEnabled = false;
                 btnResultSubmit.IsEnabled = false;
                 lbCharLimit.Content = "Name has to be less than 25 characters!";
+                lbCharLimit.Foreground = Brushes.Red;
             }
             else
             {
-                tbUsername.IsEnabled = true;
                 btnResultSubmit.IsEnabled = true;
                 lbCharLimit.Content = "(Character Limit is 25 Characters)";
+                lbCharLimit.Foreground = Brushes.White;
             }
         }
 
         private void btnResultSubmit_Click(object sender, RoutedEventArgs e)
         {
             string userName = tbUsername.Text.ToString();
-            string userTime = _timeSpent.ToString(@"hh\\:nn\\:ss");
+            string userTime = _timeSpent.ToString(@"hh\:mm\:ss");
             int userScore = _userScore;
 
             WindowManager._mainWin = true;
@@ -443,6 +443,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             WindowManager._mainWin = true;
             WindowManager._mainWindow = new MainWindow();
             WindowManager._mainWindow.Show();
+            WindowManager._gameWindow.Close();
         }
 
         private void btnResultSubmit_MouseEnter(object sender, MouseEventArgs e)
