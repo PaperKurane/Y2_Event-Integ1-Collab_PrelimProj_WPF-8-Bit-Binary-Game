@@ -25,6 +25,8 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
         private Dictionary<string, string[]> _userDataMedium = new Dictionary<string, string[]>();
         private Dictionary<string, string[]> _userDataHard = new Dictionary<string, string[]>();
 
+        LeaderboardManager _lm = new LeaderboardManager();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -137,7 +139,6 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
         }
 
         #region Leaderboard Section
-
         private void btnLeaderboard_MouseEnter(object sender, MouseEventArgs e)
         {
             lbLdrBrdName.Visibility = Visibility.Visible;
@@ -179,10 +180,13 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             switch (_difficulty)
             {
                 case "Easy":
+                    _lm.EasyBoard(_userDataEasy);
                     break;
                 case "Medium":
+                    _lm.MediumBoard(_userDataMedium);
                     break;
                 case "Hard":
+                    _lm.HardBoard(_userDataHard);
                     break;
             }
         }
