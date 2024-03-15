@@ -25,7 +25,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
         private Dictionary<string, string[]> _userDataMedium = new Dictionary<string, string[]>();
         private Dictionary<string, string[]> _userDataHard = new Dictionary<string, string[]>();
 
-        LeaderboardManager _lm = new LeaderboardManager();
+        private LeaderboardManager _lm = new LeaderboardManager();
 
         public MainWindow()
         {

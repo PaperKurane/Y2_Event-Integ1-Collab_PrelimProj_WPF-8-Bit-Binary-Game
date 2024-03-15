@@ -9,8 +9,6 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 {
     internal class LeaderboardManager
     {
-        private MainWindow mainWindow;
-
         public void EasyBoard(Dictionary<string, string[]> userData)
         {
             if (userData.Count == 0)
@@ -50,15 +48,15 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 
             for (int i = 0; i < maxRecords; i++)
             {
-                TextBox tbPlaceNum = mainWindow.FindName($"tbPlaceNum{i + 1}") as TextBox;
-                TextBox tbPlace = mainWindow.FindName($"tbPlace{i + 1}") as TextBox;
-                TextBox tbPlaceTime = mainWindow.FindName($"tbPlaceTime{i + 1}") as TextBox;
-                TextBox tbPlaceScore = mainWindow.FindName($"tbPlaceScore{i + 1}") as TextBox;
+                //TextBox tbPlaceNum = mainWindow.FindName($"tbPlaceNum{i + 1}") as TextBox;
+                //TextBox tbPlace = mainWindow.FindName($"tbPlace{i + 1}") as TextBox;
+                //TextBox tbPlaceTime = mainWindow.FindName($"tbPlaceTime{i + 1}") as TextBox;
+                //TextBox tbPlaceScore = mainWindow.FindName($"tbPlaceScore{i + 1}") as TextBox;
 
-                tbPlaceNum.Text = (i + 1).ToString();
-                tbPlace.Text = sortedUserData[i].Key;
-                tbPlaceTime.Text = sortedUserData[i].Value[0];
-                tbPlaceScore.Text = sortedUserData[i].Value[1];
+                //tbPlaceNum.Text = (i + 1).ToString();
+                //tbPlace.Text = sortedUserData[i].Key;
+                //tbPlaceTime.Text = sortedUserData[i].Value[0];
+                //tbPlaceScore.Text = sortedUserData[i].Value[1];
             }
         }
     }
