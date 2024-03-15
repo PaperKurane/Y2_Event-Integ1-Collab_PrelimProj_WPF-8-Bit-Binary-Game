@@ -33,6 +33,19 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             }
         }
 
+        public MainWindow(string userName, string userTime, int userScore)
+        {
+            InitializeComponent();
+
+            if (!WindowManager._mainWin)
+            {
+                WindowManager._mainWindow = this;
+                WindowManager._mainWin = true;
+            }
+
+            LeaderBoardHandler(userName, userTime, userScore);
+        }
+
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
             if (!WindowManager._gameWin)
@@ -146,7 +159,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             gMain.Visibility = Visibility.Visible;
         }
 
-        private void LeaderBoardHandler()
+        private void LeaderBoardHandler(string userName, string userTime, int userScore)
         {
 
         }

@@ -6,82 +6,132 @@
         xmlns:local="clr-namespace:Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game"
         mc:Ignorable="d"
         Title="The Clod 8-Bit Binary Game (Very Fun Trust Me)" Height="450" Width="800" ResizeMode="NoResize">
-    <Grid>
+    <Grid x:Name="gResults" RenderTransformOrigin="0.491,0.438">
         <Grid.Background>
             <ImageBrush ImageSource="GameResources/GameBackground.png"/>
         </Grid.Background>
 
-        <!--#region Labels-->
-        <Label x:Name="lbDecimal128" Content="128" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold" Margin="134,227,0,0" VerticalAlignment="Top" Width="60" Foreground="White" HorizontalAlignment="Left"/>
-        <Rectangle Fill="White" HorizontalAlignment="Left" Height="2" Margin="139,259,0,0" Stroke="White" VerticalAlignment="Top" Width="50"/>
-        <Label x:Name="lbDecimal64" Content="64" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold" Margin="200,227,0,0" VerticalAlignment="Top" Width="60" Foreground="White" HorizontalAlignment="Left"/>
-        <Rectangle Fill="White" HorizontalAlignment="Left" Height="2" Margin="205,259,0,0" Stroke="White" VerticalAlignment="Top" Width="50"/>
-        <Label x:Name="lbDecimal32" Content="32" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold" Margin="265,227,0,0" VerticalAlignment="Top" Width="60" Foreground="White" HorizontalAlignment="Left"/>
-        <Rectangle Fill="White" HorizontalAlignment="Left" Height="2" Margin="335,259,0,0" Stroke="White" VerticalAlignment="Top" Width="50"/>
-        <Label x:Name="lbDecimal16" Content="16" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold" Margin="330,227,0,0" VerticalAlignment="Top" Width="60" Foreground="White" HorizontalAlignment="Left"/>
-        <Rectangle Fill="White" HorizontalAlignment="Left" Height="2" Margin="465,259,0,0" Stroke="White" VerticalAlignment="Top" Width="50"/>
-        <Label x:Name="lbDecimal8" Content="8" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold" Margin="395,227,0,0" VerticalAlignment="Top" Width="60" Foreground="White" HorizontalAlignment="Left"/>
-        <Rectangle Fill="White" HorizontalAlignment="Left" Height="2" Margin="270,259,0,0" Stroke="White" VerticalAlignment="Top" Width="50"/>
-        <Label x:Name="lbDecimal4" Content="4" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold" Margin="460,227,0,0" VerticalAlignment="Top" Width="60" Foreground="White" HorizontalAlignment="Left"/>
-        <Rectangle Fill="White" HorizontalAlignment="Left" Height="2" Margin="400,259,0,0" Stroke="White" VerticalAlignment="Top" Width="50"/>
-        <Label x:Name="lbDecimal2" Content="2" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold" Margin="524,227,0,0" VerticalAlignment="Top" Width="60" Foreground="White" HorizontalAlignment="Left"/>
-        <Rectangle Fill="White" HorizontalAlignment="Left" Height="2" Margin="529,259,0,0" Stroke="White" VerticalAlignment="Top" Width="50"/>
-        <Label x:Name="lbDecimal1" Content="1" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold" Margin="590,227,0,0" VerticalAlignment="Top" Width="60" Foreground="White" HorizontalAlignment="Left"/>
-        <Rectangle Fill="White" HorizontalAlignment="Left" Height="2" Margin="595,259,0,0" Stroke="White" VerticalAlignment="Top" Width="50"/>
+        <Label x:Name="lbAskName" Content="Please Enter Your Name" HorizontalContentAlignment="Center" FontSize="46" FontWeight="Bold" Margin="0,47,0,0" VerticalAlignment="Top" Width="784" Foreground="White" HorizontalAlignment="Left">
+            <Label.RenderTransform>
+                <TranslateTransform Y="0"/>
+            </Label.RenderTransform>
+            <Label.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard>
+                        <Storyboard RepeatBehavior="Forever">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)">
+                                <DiscreteDoubleKeyFrame KeyTime="0:0:0.4" Value="-10"/>
+                                <DiscreteDoubleKeyFrame KeyTime="0:0:0.8" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Label.Triggers>
+        </Label>
 
-        <Label x:Name="lbStatus" Content="Good luck!" HorizontalContentAlignment="Center" FontSize="32" FontWeight="Bold" Margin="0,124,0,0" VerticalAlignment="Top" Width="784" Foreground="White" HorizontalAlignment="Left"/>
-        <!--#endregion-->
+        <Label x:Name="lbCharLimit" Content="(Character Limit is 25 Characters)" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Normal" Margin="0,112,0,0" VerticalAlignment="Top" Width="784" Foreground="White" HorizontalAlignment="Left">
+            <Label.RenderTransform>
+                <TranslateTransform Y="0"/>
+            </Label.RenderTransform>
+            <Label.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard>
+                        <Storyboard RepeatBehavior="Forever">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)">
+                                <DiscreteDoubleKeyFrame KeyTime="0:0:0.4" Value="-10"/>
+                                <DiscreteDoubleKeyFrame KeyTime="0:0:0.8" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Label.Triggers>
+        </Label>
 
-        <Image x:Name="imgCautionBlocker" Visibility="Collapsed" HorizontalAlignment="Left" Height="32" Margin="134,231,0,0" VerticalAlignment="Top" Width="516" Source="/CautionBlocker.png"/>
+        <TextBox x:Name="tbUsername" Text="TextBox" FontSize="20" FontFamily="Segoe UI Semibold" FontWeight="Regular" Margin="185,162,0,0" TextWrapping="Wrap" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Top" Height="42" HorizontalAlignment="Left" Width="414"/>
 
-        <!--#region Buttons-->
-        <Button x:Name="btnBinary128" Content="0" Margin="134,264,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="70" Width="60" FontSize="38" FontWeight="Normal" Background="White" Click="btnBinaryClick"/>
-        <Button x:Name="btnBinary64" Content="0" Margin="200,264,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="70" Width="60" FontSize="38" FontWeight="Normal" Background="White" Click="btnBinaryClick"/>
-        <Button x:Name="btnBinary32" Content="0" Margin="265,264,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="70" Width="60" FontSize="38" FontWeight="Normal" Background="White" Click="btnBinaryClick"/>
-        <Button x:Name="btnBinary16" Content="0" Margin="330,264,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="70" Width="60" FontSize="38" FontWeight="Normal" Background="White" Click="btnBinaryClick"/>
-        <Button x:Name="btnBinary8" Content="0" Margin="395,264,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="70" Width="60" FontSize="38" FontWeight="Normal" Background="White" Click="btnBinaryClick"/>
-        <Button x:Name="btnBinary4" Content="0" Margin="460,264,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="70" Width="60" FontSize="38" FontWeight="Normal" Background="White" Click="btnBinaryClick"/>
-        <Button x:Name="btnBinary2" Content="0" Margin="524,264,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="70" Width="60" FontSize="38" FontWeight="Normal" Background="White" Click="btnBinaryClick"/>
-        <Button x:Name="btnBinary1" Content="0" Margin="590,264,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="70" Width="60" FontSize="38" FontWeight="Normal" Background="White" Click="btnBinaryClick"/>
+        
+        
+        <Button x:Name="btnResultCancel" Visibility="Visible" Content="Cancel" Margin="193,322,0,0" FontSize="18" FontWeight="Normal" Background="White" Height="35" VerticalAlignment="Top" Click="btnExit_Click" HorizontalAlignment="Left" Width="191"/>
+        <Button x:Name="btnResultSubmit" Visibility="Visible" Content="Submit" Margin="399,322,0,0" FontSize="18" FontWeight="Normal" Background="White" Height="35" VerticalAlignment="Top" Click="btnExit_Click" HorizontalAlignment="Left" Width="191"/>
 
-        <Button x:Name="btnExit" Visibility="Collapsed" Content="Exit" Margin="134,342,0,0" FontSize="18" FontWeight="Normal" Background="White" Height="36" VerticalAlignment="Top" Click="btnExit_Click" HorizontalAlignment="Left" Width="256"/>
-        <Button x:Name="btnSubmit" Visibility="Visible" Content="Submit" Margin="134,342,0,0" FontSize="18" FontWeight="Normal" Background="White" Height="36" VerticalAlignment="Top" Click="btnSubmit_Click" HorizontalAlignment="Left" Width="516"/>
-        <!--#endregion-->
 
-        <!-- TextBlocks -->
-        <TextBox x:Name="tbDecimalDisplay" Text="" TextWrapping="Wrap" HorizontalContentAlignment="Center" Width="170" Height="85" Background="White" TextAlignment="Center" VerticalAlignment="Top" FontSize="52" Margin="0,24,0,0" IsReadOnly="True" BorderThickness="2" BorderBrush="Black" HorizontalAlignment="Center"/>
 
-        <TextBox x:Name="tbScoreDisplay" Text="Score: 0" VerticalAlignment="Top" Margin="628,24,0,0" TextWrapping="Wrap" TextAlignment="Center" Height="38" BorderBrush="Black" FontSize="20" VerticalContentAlignment="Center" IsReadOnly="True" HorizontalAlignment="Left" Width="130"/>
-        <TextBox x:Name="tbLevelDisplay" Text="Level 1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="27,24,0,0" TextWrapping="Wrap" TextAlignment="Center" Width="130" Height="38" BorderBrush="Black" FontSize="20" VerticalContentAlignment="Center" IsReadOnly="True"/>
-        <TextBox x:Name="tbTimerDisplay" Text="00" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="706,65,0,0" TextWrapping="Wrap" TextAlignment="Center" Width="52" Height="38" BorderBrush="Black" FontSize="24" VerticalContentAlignment="Center" IsReadOnly="True"/>
+        <Grid x:Name="gMainGame" Visibility="Collapsed">
+            <Grid.Background>
+                <ImageBrush ImageSource="GameResources/GameBackground.png"/>
+            </Grid.Background>
 
-        <!--#region ProgressBars-->
-        <ProgressBar x:Name="pbTimer1" HorizontalAlignment="Left" Height="15" Margin="393,183,0,0" VerticalAlignment="Top" Width="360" Foreground="#FFFFC107" Background="#3F51B5" BorderBrush="Transparent" FlowDirection="LeftToRight"/>
-        <ProgressBar x:Name="pbTimer2" Height="17" Margin="34,182,0,0" VerticalAlignment="Top" Foreground="#3F51B5" Background="#FFFFC107" BorderBrush="Transparent" FlowDirection="RightToLeft" RenderTransformOrigin="0.5,0.5" OpacityMask="#FF3F51B5" HorizontalAlignment="Left" Width="360">
-            <ProgressBar.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="180"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </ProgressBar.RenderTransform>
-        </ProgressBar>
-        <!--#endregion-->
+            <!--#region Labels-->
+            <Label x:Name="lbDecimal128" Content="128" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold" Margin="134,227,0,0" VerticalAlignment="Top" Width="60" Foreground="White" HorizontalAlignment="Left"/>
+            <Rectangle Fill="White" HorizontalAlignment="Left" Height="2" Margin="139,259,0,0" Stroke="White" VerticalAlignment="Top" Width="50"/>
+            <Label x:Name="lbDecimal64" Content="64" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold" Margin="200,227,0,0" VerticalAlignment="Top" Width="60" Foreground="White" HorizontalAlignment="Left"/>
+            <Rectangle Fill="White" HorizontalAlignment="Left" Height="2" Margin="205,259,0,0" Stroke="White" VerticalAlignment="Top" Width="50"/>
+            <Label x:Name="lbDecimal32" Content="32" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold" Margin="265,227,0,0" VerticalAlignment="Top" Width="60" Foreground="White" HorizontalAlignment="Left"/>
+            <Rectangle Fill="White" HorizontalAlignment="Left" Height="2" Margin="335,259,0,0" Stroke="White" VerticalAlignment="Top" Width="50"/>
+            <Label x:Name="lbDecimal16" Content="16" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold" Margin="330,227,0,0" VerticalAlignment="Top" Width="60" Foreground="White" HorizontalAlignment="Left"/>
+            <Rectangle Fill="White" HorizontalAlignment="Left" Height="2" Margin="465,259,0,0" Stroke="White" VerticalAlignment="Top" Width="50"/>
+            <Label x:Name="lbDecimal8" Content="8" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold" Margin="395,227,0,0" VerticalAlignment="Top" Width="60" Foreground="White" HorizontalAlignment="Left"/>
+            <Rectangle Fill="White" HorizontalAlignment="Left" Height="2" Margin="270,259,0,0" Stroke="White" VerticalAlignment="Top" Width="50"/>
+            <Label x:Name="lbDecimal4" Content="4" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold" Margin="460,227,0,0" VerticalAlignment="Top" Width="60" Foreground="White" HorizontalAlignment="Left"/>
+            <Rectangle Fill="White" HorizontalAlignment="Left" Height="2" Margin="400,259,0,0" Stroke="White" VerticalAlignment="Top" Width="50"/>
+            <Label x:Name="lbDecimal2" Content="2" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold" Margin="524,227,0,0" VerticalAlignment="Top" Width="60" Foreground="White" HorizontalAlignment="Left"/>
+            <Rectangle Fill="White" HorizontalAlignment="Left" Height="2" Margin="529,259,0,0" Stroke="White" VerticalAlignment="Top" Width="50"/>
+            <Label x:Name="lbDecimal1" Content="1" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold" Margin="590,227,0,0" VerticalAlignment="Top" Width="60" Foreground="White" HorizontalAlignment="Left"/>
+            <Rectangle Fill="White" HorizontalAlignment="Left" Height="2" Margin="595,259,0,0" Stroke="White" VerticalAlignment="Top" Width="50"/>
 
-        <Button x:Name="btnMega" Content="Click Anywhere to Continue..." Background="#FF3F51B5" Height="410" VerticalAlignment="Top" FontSize="48" FontWeight="Bold" Click="btnMega_Click" Foreground="White"
-                Visibility="Visible" Margin="0,1,0,0" HorizontalAlignment="Left" Width="784">
-            <Button.Template>
-                <ControlTemplate TargetType="Button">
-                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
-                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
-                    </Border>
-                </ControlTemplate>
-            </Button.Template>
-        </Button>
+            <Label x:Name="lbStatus" Content="Good luck!" HorizontalContentAlignment="Center" FontSize="32" FontWeight="Bold" Margin="0,124,0,0" VerticalAlignment="Top" Width="784" Foreground="White" HorizontalAlignment="Left"/>
+            <!--#endregion-->
+
+            <Image x:Name="imgCautionBlocker" Visibility="Collapsed" HorizontalAlignment="Left" Height="32" Margin="134,231,0,0" VerticalAlignment="Top" Width="516" Source="/CautionBlocker.png"/>
+
+            <!--#region Buttons-->
+            <Button x:Name="btnBinary128" Content="0" Margin="134,264,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="70" Width="60" FontSize="38" FontWeight="Normal" Background="White" Click="btnBinaryClick"/>
+            <Button x:Name="btnBinary64" Content="0" Margin="200,264,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="70" Width="60" FontSize="38" FontWeight="Normal" Background="White" Click="btnBinaryClick"/>
+            <Button x:Name="btnBinary32" Content="0" Margin="265,264,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="70" Width="60" FontSize="38" FontWeight="Normal" Background="White" Click="btnBinaryClick"/>
+            <Button x:Name="btnBinary16" Content="0" Margin="330,264,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="70" Width="60" FontSize="38" FontWeight="Normal" Background="White" Click="btnBinaryClick"/>
+            <Button x:Name="btnBinary8" Content="0" Margin="395,264,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="70" Width="60" FontSize="38" FontWeight="Normal" Background="White" Click="btnBinaryClick"/>
+            <Button x:Name="btnBinary4" Content="0" Margin="460,264,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="70" Width="60" FontSize="38" FontWeight="Normal" Background="White" Click="btnBinaryClick"/>
+            <Button x:Name="btnBinary2" Content="0" Margin="524,264,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="70" Width="60" FontSize="38" FontWeight="Normal" Background="White" Click="btnBinaryClick"/>
+            <Button x:Name="btnBinary1" Content="0" Margin="590,264,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="70" Width="60" FontSize="38" FontWeight="Normal" Background="White" Click="btnBinaryClick"/>
+
+            <Button x:Name="btnExit" Visibility="Collapsed" Content="Exit" Margin="134,342,0,0" FontSize="18" FontWeight="Normal" Background="White" Height="36" VerticalAlignment="Top" Click="btnExit_Click" HorizontalAlignment="Left" Width="256"/>
+            <Button x:Name="btnSubmit" Visibility="Visible" Content="Submit" Margin="134,342,0,0" FontSize="18" FontWeight="Normal" Background="White" Height="36" VerticalAlignment="Top" Click="btnSubmit_Click" HorizontalAlignment="Left" Width="516"/>
+            <!--#endregion-->
+
+            <!-- TextBlocks -->
+            <TextBox x:Name="tbDecimalDisplay" Text="" TextWrapping="Wrap" HorizontalContentAlignment="Center" Width="170" Height="85" Background="White" TextAlignment="Center" VerticalAlignment="Top" FontSize="52" Margin="0,24,0,0" IsReadOnly="True" BorderThickness="2" BorderBrush="Black" HorizontalAlignment="Center"/>
+
+            <TextBox x:Name="tbScoreDisplay" Text="Score: 0" VerticalAlignment="Top" Margin="628,24,0,0" TextWrapping="Wrap" TextAlignment="Center" Height="38" BorderBrush="Black" FontSize="20" VerticalContentAlignment="Center" IsReadOnly="True" HorizontalAlignment="Left" Width="130"/>
+            <TextBox x:Name="tbLevelDisplay" Text="Level 1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="27,24,0,0" TextWrapping="Wrap" TextAlignment="Center" Width="130" Height="38" BorderBrush="Black" FontSize="20" VerticalContentAlignment="Center" IsReadOnly="True"/>
+            <TextBox x:Name="tbTimerDisplay" Text="00" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="706,65,0,0" TextWrapping="Wrap" TextAlignment="Center" Width="52" Height="38" BorderBrush="Black" FontSize="24" VerticalContentAlignment="Center" IsReadOnly="True"/>
+
+            <!--#region ProgressBars-->
+            <ProgressBar x:Name="pbTimer1" HorizontalAlignment="Left" Height="15" Margin="393,183,0,0" VerticalAlignment="Top" Width="360" Foreground="#FFFFC107" Background="#3F51B5" BorderBrush="Transparent" FlowDirection="LeftToRight"/>
+            <ProgressBar x:Name="pbTimer2" Height="17" Margin="34,182,0,0" VerticalAlignment="Top" Foreground="#3F51B5" Background="#FFFFC107" BorderBrush="Transparent" FlowDirection="RightToLeft" RenderTransformOrigin="0.5,0.5" OpacityMask="#FF3F51B5" HorizontalAlignment="Left" Width="360">
+                <ProgressBar.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="180"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </ProgressBar.RenderTransform>
+            </ProgressBar>
+            <!--#endregion-->
+
+            <Button x:Name="btnMega" Content="Click Anywhere to Continue..." Background="#FF3F51B5" Height="410" VerticalAlignment="Top" FontSize="48" FontWeight="Bold" Click="btnMega_Click" Foreground="White"
+                    Visibility="Collapsed" Margin="0,1,0,0" HorizontalAlignment="Left" Width="784">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </Grid>
 
         <Rectangle x:Name="rBorderReference" Grid.ColumnSpan="10" HorizontalAlignment="Left" Height="23" Margin="0,411,0,0" VerticalAlignment="Top" Width="800" Fill="Black" Stroke="Black"/>
         <Rectangle x:Name="rBorderReferenceVertical" HorizontalAlignment="Left" Height="434" Margin="784,0,0,0" VerticalAlignment="Center" Width="16" Fill="Black" Stroke="Black"/>
-
     </Grid>
 </Window>

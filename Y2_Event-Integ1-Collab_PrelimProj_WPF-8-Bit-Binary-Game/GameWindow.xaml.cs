@@ -23,7 +23,8 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
     /// </summary>
     public partial class GameWindow : Window
     {
-        DateTime startTime;
+        DateTime _startTime;
+        TimeSpan _timeSpent;
         DispatcherTimer _dt = null;
         Random _rnd = new Random();
         double _timeLeftInMilliseconds = 0;
@@ -68,6 +69,9 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 
             if (!WindowManager._mainWin)
             {
+                UserDetails();
+
+                gMainGame.Visibility = Visibility.Collapsed;
 
                 //WindowManager._mainWin = true;
                 //WindowManager._mainWindow = new MainWindow();
@@ -81,6 +85,14 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             }
 
             this.Close();
+        }
+        
+        private void UserDetails()
+        {
+            _timeSpent = DateTime.Now - _startTime;
+
+            lbTime.Content = "Time: " + _timeSpent.ToString(@"hh\\:nn\\:ss");
+            lbScore.Content = "Score: " + _userScore;
         }
 
         private void StartGame()
@@ -180,6 +192,8 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 
         private async void btnMega_Click(object sender, RoutedEventArgs e)
         {
+            _startTime = DateTime.Now;
+
             btnMega.FontSize = 84; // Default is 48
             for (int x = 1; x >= 1; x--)
             {
@@ -198,7 +212,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 
         private void TimerStart()
         {
-            startTime = DateTime.Now;
+            _startTime = DateTime.Now;
 
             _dt = new DispatcherTimer();
             _dt.Interval = new TimeSpan(0, 0, 0, 0, 50);
@@ -208,7 +222,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 
         private void _dt_Tick(object sender, EventArgs e)
         {
-            TimeSpan elapsedtime = DateTime.Now - startTime;
+            TimeSpan elapsedtime = DateTime.Now - _startTime;
             double remainingMilliseconds = _timeLeftInMilliseconds - elapsedtime.TotalMilliseconds;
 
             tbTimerDisplay.Text = ((int)(remainingMilliseconds / 1000)).ToString("F0");
@@ -395,6 +409,55 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             button.Background = Brushes.White;
             button.Foreground = Brushes.Black;
             button.FontWeight = FontWeights.Normal;
+        }
+
+        private void tbUsername_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (tbUsername.Text.Length > 25)
+            {
+                tbUsername.IsEnabled = false;
+                btnResultSubmit.IsEnabled = false;
+                lbCharLimit.Content = "Name has to be less than 25 characters!";
+            }
+            else
+            {
+                tbUsername.IsEnabled = true;
+                btnResultSubmit.IsEnabled = true;
+                lbCharLimit.Content = "(Character Limit is 25 Characters)";
+            }
+        }
+
+        private void btnResultSubmit_Click(object sender, RoutedEventArgs e)
+        {
+            string userName = tbUsername.Text.ToString();
+            string userTime = _timeSpent.ToString(@"hh\\:nn\\:ss");
+            int userScore = _userScore;
+
+            WindowManager._mainWin = true;
+            WindowManager._mainWindow = new MainWindow(userName, userTime, userScore);
+            WindowManager._mainWindow.Show();
+        }
+
+        private void btnResultCancel_Click(object sender, RoutedEventArgs e)
+        {
+            WindowManager._mainWin = true;
+            WindowManager._mainWindow = new MainWindow();
+            WindowManager._mainWindow.Show();
+        }
+
+        private void btnResultSubmit_MouseEnter(object sender, MouseEventArgs e)
+        {
+            lbStats.Content = "Pressing this button will record your session to the leaderboard if eligible!";
+        }
+
+        private void btnResultCancel_MouseEnter(object sender, MouseEventArgs e)
+        {
+            lbStats.Content = "Pressing this button will not record your current session to the leaderboard.";
+        }
+
+        private void btnResultCancelSubmit_MouseLeave(object sender, MouseEventArgs e)
+        {
+            lbStats.Content = "Final Stats";
         }
     }
 }
