@@ -68,9 +68,10 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 
             if (!WindowManager._mainWin)
             {
-                WindowManager._mainWin = true;
-                WindowManager._mainWindow = new MainWindow();
-                WindowManager._mainWindow.Show();
+
+                //WindowManager._mainWin = true;
+                //WindowManager._mainWindow = new MainWindow();
+                //WindowManager._mainWindow.Show();
             }
             else
             {

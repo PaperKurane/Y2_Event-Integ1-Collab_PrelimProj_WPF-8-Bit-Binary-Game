@@ -146,6 +146,11 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             gMain.Visibility = Visibility.Visible;
         }
 
+        private void LeaderBoardHandler()
+        {
+
+        }
+
         private void RadioButtonLeaderboard_Checked(object sender, RoutedEventArgs e)
         {
 
