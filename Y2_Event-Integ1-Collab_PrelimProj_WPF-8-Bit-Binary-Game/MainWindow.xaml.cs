@@ -28,6 +28,10 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
         private Dictionary<string, string[]> _userDataMedium = new Dictionary<string, string[]>();
         private Dictionary<string, string[]> _userDataHard = new Dictionary<string, string[]>();
 
+        private List<KeyValuePair<string, string[]>> _sortedUserDataEasy = new List<KeyValuePair<string, string[]>>();
+        private List<KeyValuePair<string, string[]>> _sortedUserDataMedium = new List<KeyValuePair<string, string[]>>();
+        private List<KeyValuePair<string, string[]>> _sortedUserDataHard = new List<KeyValuePair<string, string[]>>();
+
         private LeaderboardManager _lm = new LeaderboardManager();
 
         public MainWindow()
@@ -41,7 +45,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             }
         }
 
-        public MainWindow(string userName, string userTime, int userScore)
+        public MainWindow(string userName, string userTime, int userScore, string difficulty)
         {
             InitializeComponent();
 
@@ -51,7 +55,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
                 WindowManager._mainWin = true;
             }
 
-            LeaderBoardHandler(userName, userTime, userScore);
+            LeaderBoardHandler(userName, userTime, userScore, difficulty);
         }
 
         private void btnStart_Click(object sender, RoutedEventArgs e)
@@ -162,7 +166,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             gMain.Visibility = Visibility.Visible;
         }
 
-        private void LeaderBoardHandler(string userName, string userTime, int userScore)
+        private void LeaderBoardHandler(string userName, string userTime, int userScore, string difficulty)
         {
             string[] userData = { userTime, userScore.ToString() };
 
@@ -171,24 +175,26 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             _userDataEasy["The Stingray on Desk"] = new string[] { "00:01:20", "8" };
             _userDataEasy["Pipi"] = new string[] { "00:01:25", "8" };
 
-            switch (_difficulty)
+            _lm.ReadLeaderBoard(difficulty);
+
+            switch (difficulty)
             {
                 case "Easy":
                     _userDataEasy[userName] = userData;
-                    SortUserData(_userDataEasy);
+                    _sortedUserDataEasy = SortUserData(_userDataEasy);
                     break;
                 case "Medium":
                     _userDataMedium[userName] = userData;
-                    SortUserData(_userDataMedium);
+                    _sortedUserDataMedium = SortUserData(_userDataMedium);
                     break;
                 case "Hard":
                     _userDataHard[userName] = userData;
-                    SortUserData(_userDataHard);
+                    _sortedUserDataHard = SortUserData(_userDataHard);
                     break;
             }
         }
 
-        private void SortUserData(Dictionary<string, string[]> userData)
+        private List<KeyValuePair<string, string[]>> SortUserData(Dictionary<string, string[]> userData)
         {
             _sortedUserData = userData.ToList();
 
@@ -211,6 +217,8 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
                 _sortedUserData[x] = _sortedUserData[minIndex];
                 _sortedUserData[minIndex] = temp;
             }
+
+            return _sortedUserData;
         }
 
         private void RadioButtonLeaderboard_Checked(object sender, RoutedEventArgs e)
@@ -220,13 +228,13 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             switch (difficulty)
             {
                 case "Easy":
-                    _lm.EasyBoard(_sortedUserData);
+                    _lm.EasyBoard(_sortedUserDataEasy);
                     break;
                 case "Medium":
-                    _lm.MediumBoard(_sortedUserData);
+                    _lm.MediumBoard(_sortedUserDataMedium);
                     break;
                 case "Hard":
-                    _lm.HardBoard(_sortedUserData);
+                    _lm.HardBoard(_sortedUserDataHard);
                     break;
             }
         }

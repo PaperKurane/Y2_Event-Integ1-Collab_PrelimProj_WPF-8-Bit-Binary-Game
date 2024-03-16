@@ -29,7 +29,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
         Random _rnd = new Random();
         double _timeLeftInMilliseconds = 0;
 
-        string _difficulty = "Medium";
+        string _difficulty = null;
         int _currentLevel = 1;
         int _userScore = 0;
 
@@ -434,7 +434,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             int userScore = _userScore;
 
             WindowManager._mainWin = true;
-            WindowManager._mainWindow = new MainWindow(userName, userTime, userScore);
+            WindowManager._mainWindow = new MainWindow(userName, userTime, userScore, _difficulty);
             WindowManager._mainWindow.Show();
         }
 
