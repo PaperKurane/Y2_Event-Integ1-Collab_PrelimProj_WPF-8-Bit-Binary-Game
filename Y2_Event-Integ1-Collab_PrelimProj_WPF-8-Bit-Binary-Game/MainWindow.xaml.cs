@@ -31,6 +31,10 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
         private List<KeyValuePair<string, string[]>> _sortedUserDataMedium = new List<KeyValuePair<string, string[]>>();
         private List<KeyValuePair<string, string[]>> _sortedUserDataHard = new List<KeyValuePair<string, string[]>>();
 
+        private List<KeyValuePair<string, string[]>> _userDataEasyStored;
+        private List<KeyValuePair<string, string[]>> _userDataMediumStored;
+        private List<KeyValuePair<string, string[]>> _userDataHardStored;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -62,9 +66,11 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             _userDataMedium = ReadLeaderBoard(difficultiesforReading[1]);
             _userDataHard = ReadLeaderBoard(difficultiesforReading[2]);
 
-            _sortedUserDataEasy = SortUserData(_userDataEasy);
-            _sortedUserDataMedium = SortUserData(_userDataMedium);
-            _sortedUserDataHard = SortUserData(_userDataHard);
+            //_sortedUserDataEasy = SortUserData(_userDataEasy);
+            //_sortedUserDataMedium = SortUserData(_userDataMedium);
+            //_sortedUserDataHard = SortUserData(_userDataHard);
+
+            LoadLeaderboardData();
 
             DisplayLeaderboard(_sortedUserDataEasy); // Easy because default
 
@@ -99,7 +105,10 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
             if (!WindowManager._gameWin)
+            {
+                SaveToLeaderboard();
                 DifficultySelect();
+            }
             else
                 WindowManager._gameWindow.Focus();
         }
@@ -292,6 +301,20 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
                     textBoxScore.Text = userData.Value[1];
                 }
             }
+        }
+
+        private void LoadLeaderboardData()
+        {
+            _sortedUserDataEasy = new List<KeyValuePair<string, string[]>>(_userDataEasyStored);
+            _sortedUserDataMedium = new List<KeyValuePair<string, string[]>>(_userDataMediumStored);
+            _sortedUserDataHard = new List<KeyValuePair<string, string[]>>(_userDataHardStored);
+        }
+
+        private void SaveToLeaderboard()
+        {
+            _userDataEasyStored = new List<KeyValuePair<string, string[]>>(_sortedUserDataEasy);
+            _userDataMediumStored = new List<KeyValuePair<string, string[]>>(_sortedUserDataMedium);
+            _userDataHardStored = new List<KeyValuePair<string, string[]>>(_sortedUserDataHard);
         }
 
         private void ClearLeaderboard()
