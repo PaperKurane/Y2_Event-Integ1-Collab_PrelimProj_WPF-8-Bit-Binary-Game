@@ -22,14 +22,12 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
     public partial class MainWindow : Window
     {
         private string _difficulty = null;
-        //private Dictionary<string, string[]> _userData = new Dictionary<string, string[]>();
-        //private List<KeyValuePair<string, string[]>> _sortedUserData = new List<KeyValuePair<string, string[]>>();
 
         //private Dictionary<string, string[]> _userDataEasy = new Dictionary<string, string[]>();
         //private Dictionary<string, string[]> _userDataMedium = new Dictionary<string, string[]>();
         //private Dictionary<string, string[]> _userDataHard = new Dictionary<string, string[]>();
 
-        private List<KeyValuePair<string, string[]>> _userDataEasy = new List<KeyValuePair<string, string[]>> ();
+        private List<KeyValuePair<string, string[]>> _userDataEasy = new List<KeyValuePair<string, string[]>>();
         private List<KeyValuePair<string, string[]>> _userDataMedium = new List<KeyValuePair<string, string[]>>();
         private List<KeyValuePair<string, string[]>> _userDataHard = new List<KeyValuePair<string, string[]>>();
 
