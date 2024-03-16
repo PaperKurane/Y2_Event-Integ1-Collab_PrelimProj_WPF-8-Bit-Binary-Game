@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,12 +22,16 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
     public partial class MainWindow : Window
     {
         private string _difficulty = null;
-        private Dictionary<string, string[]> _userData = new Dictionary<string, string[]>();
-        private List<KeyValuePair<string, string[]>> _sortedUserData = new List<KeyValuePair<string, string[]>>();
+        //private Dictionary<string, string[]> _userData = new Dictionary<string, string[]>();
+        //private List<KeyValuePair<string, string[]>> _sortedUserData = new List<KeyValuePair<string, string[]>>();
 
-        private Dictionary<string, string[]> _userDataEasy = new Dictionary<string, string[]>();
-        private Dictionary<string, string[]> _userDataMedium = new Dictionary<string, string[]>();
-        private Dictionary<string, string[]> _userDataHard = new Dictionary<string, string[]>();
+        //private Dictionary<string, string[]> _userDataEasy = new Dictionary<string, string[]>();
+        //private Dictionary<string, string[]> _userDataMedium = new Dictionary<string, string[]>();
+        //private Dictionary<string, string[]> _userDataHard = new Dictionary<string, string[]>();
+
+        private List<KeyValuePair<string, string[]>> _userDataEasy = new List<KeyValuePair<string, string[]>> ();
+        private List<KeyValuePair<string, string[]>> _userDataMedium = new List<KeyValuePair<string, string[]>>();
+        private List<KeyValuePair<string, string[]>> _userDataHard = new List<KeyValuePair<string, string[]>>();
 
         private List<KeyValuePair<string, string[]>> _sortedUserDataEasy = new List<KeyValuePair<string, string[]>>();
         private List<KeyValuePair<string, string[]>> _sortedUserDataMedium = new List<KeyValuePair<string, string[]>>();
@@ -37,6 +42,11 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
         public MainWindow()
         {
             InitializeComponent();
+
+            string[] difficultiesforReading = new string[] {"Easy", "Medium", "Hard"};
+            _userDataEasy = ReadLeaderBoard(difficultiesforReading[0]);
+            _userDataMedium = ReadLeaderBoard(difficultiesforReading[1]);
+            _userDataHard = ReadLeaderBoard(difficultiesforReading[2]);
 
             if (!WindowManager._mainWin)
             {
@@ -56,6 +66,25 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             }
 
             LeaderBoardHandler(userName, userTime, userScore, difficulty);
+        }
+
+        public List<KeyValuePair<string, string[]>> ReadLeaderBoard(string difficulty)
+        {
+            List<KeyValuePair<string, string[]>> leaderboardData = new List<KeyValuePair<string, string[]>>();
+
+            using (StreamReader sr = new StreamReader("Rankings" + difficulty + ".csv"))
+            {
+                string line = "";
+                while ((line = sr.ReadLine()) != null)
+                {
+                    string[] read = line.Split(',');
+                    string key = read[0];
+                    string[] value = { read[1], read[2] };
+                    leaderboardData.Add(new KeyValuePair<string, string[]>(key, value));
+                }
+            }
+
+            return leaderboardData;
         }
 
         private void btnStart_Click(object sender, RoutedEventArgs e)
@@ -168,57 +197,53 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 
         private void LeaderBoardHandler(string userName, string userTime, int userScore, string difficulty)
         {
-            string[] userData = { userTime, userScore.ToString() };
-
-            _userDataEasy["Claude Vincent Gallardo"] = new string[] { "00:01:21", "8" };
-            _userDataEasy["Orange Jungle Juice"] = new string[] { "00:00:59", "6" };
-            _userDataEasy["The Stingray on Desk"] = new string[] { "00:01:20", "8" };
-            _userDataEasy["Pipi"] = new string[] { "00:01:25", "8" };
-
-            _lm.ReadLeaderBoard(difficulty);
+            string[] userData = {userTime, userScore.ToString()};
 
             switch (difficulty)
             {
                 case "Easy":
-                    _userDataEasy[userName] = userData;
+                    //_userDataEasy = ReadLeaderBoard(difficulty).ToDictionary(kv => kv.Key, kv => kv.Value);
+                    _userDataEasy.Add(new KeyValuePair<string, string[]>(userName, userData));
                     _sortedUserDataEasy = SortUserData(_userDataEasy);
                     break;
                 case "Medium":
-                    _userDataMedium[userName] = userData;
+                    //_userDataMedium = ReadLeaderBoard(difficulty).ToDictionary(kv => kv.Key, kv => kv.Value);
+                    _userDataMedium.Add(new KeyValuePair<string, string[]>(userName, userData));
                     _sortedUserDataMedium = SortUserData(_userDataMedium);
                     break;
                 case "Hard":
-                    _userDataHard[userName] = userData;
+                    //_userDataHard = ReadLeaderBoard(difficulty).ToDictionary(kv => kv.Key, kv => kv.Value);
+                    _userDataHard.Add(new KeyValuePair<string, string[]>(userName, userData));
                     _sortedUserDataHard = SortUserData(_userDataHard);
                     break;
             }
         }
 
-        private List<KeyValuePair<string, string[]>> SortUserData(Dictionary<string, string[]> userData)
+        private List<KeyValuePair<string, string[]>> SortUserData(List<KeyValuePair<string, string[]>> userData)
         {
-            _sortedUserData = userData.ToList();
+            List<KeyValuePair<string, string[]>> sortedUserData = userData.ToList();
 
             // Sirs Selection Sort Code thing
-            for (int x = 0; x < _sortedUserData.Count - 1; x++)
+            for (int x = 0; x < sortedUserData.Count - 1; x++)
             {
                 int minIndex = x;
-                for (int y = x + 1; y < _sortedUserData.Count; y++)
+                for (int y = x + 1; y < sortedUserData.Count; y++)
                 {
-                    int xScore = int.Parse(_sortedUserData[y].Value[1]);
-                    int yScore = int.Parse(_sortedUserData[minIndex].Value[1]);
-                    TimeSpan xTime = TimeSpan.Parse(_sortedUserData[y].Value[0]);
-                    TimeSpan yTime = TimeSpan.Parse(_sortedUserData[minIndex].Value[0]);
+                    int xScore = int.Parse(sortedUserData[y].Value[1]);
+                    int yScore = int.Parse(sortedUserData[minIndex].Value[1]);
+                    TimeSpan xTime = TimeSpan.Parse(sortedUserData[y].Value[0]);
+                    TimeSpan yTime = TimeSpan.Parse(sortedUserData[minIndex].Value[0]);
 
                     if (xScore > yScore || (xScore == yScore && xTime < yTime))
                         minIndex = y;
                 }
 
-                KeyValuePair<string, string[]> temp = _sortedUserData[x];
-                _sortedUserData[x] = _sortedUserData[minIndex];
-                _sortedUserData[minIndex] = temp;
+                KeyValuePair<string, string[]> temp = sortedUserData[x];
+                sortedUserData[x] = sortedUserData[minIndex];
+                sortedUserData[minIndex] = temp;
             }
 
-            return _sortedUserData;
+            return sortedUserData;
         }
 
         private void RadioButtonLeaderboard_Checked(object sender, RoutedEventArgs e)
@@ -228,14 +253,33 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             switch (difficulty)
             {
                 case "Easy":
-                    _lm.EasyBoard(_sortedUserDataEasy);
+                    DisplayLeaderboard(_sortedUserDataEasy);
                     break;
                 case "Medium":
-                    _lm.MediumBoard(_sortedUserDataMedium);
+                    DisplayLeaderboard(_sortedUserDataMedium);
                     break;
                 case "Hard":
-                    _lm.HardBoard(_sortedUserDataHard);
+                    DisplayLeaderboard(_sortedUserDataHard);
                     break;
+            }
+        }
+
+        private void DisplayLeaderboard(List<KeyValuePair<string, string[]>> sortedUserData)
+        {
+            for (int x = 0; x < sortedUserData.Count && x < 10; x++)
+            {
+                KeyValuePair<string, string[]> userData = sortedUserData[x];
+
+                TextBox textBoxName = FindName($"tbPlace{x + 1}") as TextBox;
+                TextBox textBoxTime = FindName($"tbPlaceTime{x + 1}") as TextBox;
+                TextBox textBoxScore = FindName($"tbPlaceScore{x + 1}") as TextBox;
+
+                if (textBoxName != null && textBoxTime != null && textBoxScore != null)
+                {
+                    textBoxName.Text = userData.Key;
+                    textBoxTime.Text = userData.Value[0];
+                    textBoxScore.Text = userData.Value[1];
+                }
             }
         }
         #endregion
