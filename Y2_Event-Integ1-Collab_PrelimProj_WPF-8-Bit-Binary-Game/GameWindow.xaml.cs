@@ -70,21 +70,13 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             if (!WindowManager._mainWin)
             {
                 UserDetails();
-
                 gMainGame.Visibility = Visibility.Collapsed;
-
-                //WindowManager._mainWin = true;
-                //WindowManager._mainWindow = new MainWindow();
-                //WindowManager._mainWindow.Show();
             }
             else
             {
-                WindowManager._mainWindow = new MainWindow();
                 WindowManager._mainWindow.Show();
                 WindowManager._gameWindow.Close();
             }
-
-            //this.Close();
         }
         
         private void UserDetails()
@@ -413,16 +405,16 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 
         private void tbUsername_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (tbUsername.Text.Length > 25)
+            if (tbUsername.Text.Length > 24)
             {
                 btnResultSubmit.IsEnabled = false;
-                lbCharLimit.Content = "Name has to be less than 25 characters!";
+                lbCharLimit.Content = "Name has to be less than 24 characters!";
                 lbCharLimit.Foreground = Brushes.Red;
             }
             else
             {
                 btnResultSubmit.IsEnabled = true;
-                lbCharLimit.Content = "(Character Limit is 25 Characters)";
+                lbCharLimit.Content = "(Character Limit is 24 Characters)";
                 lbCharLimit.Foreground = Brushes.White;
             }
         }
@@ -436,6 +428,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             WindowManager._mainWin = true;
             WindowManager._mainWindow = new MainWindow(userName, userTime, userScore, _difficulty);
             WindowManager._mainWindow.Show();
+            WindowManager._gameWindow.Close();
         }
 
         private void btnResultCancel_Click(object sender, RoutedEventArgs e)
