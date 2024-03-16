@@ -135,7 +135,7 @@
             <Label x:Name="lbCopyright" Visibility="Visible" Content="Copyright Cloductions. Do not distribute!" HorizontalContentAlignment="Right" FontSize="14" FontWeight="Bold" Margin="513,383,0,0" VerticalAlignment="Top" Width="273" Foreground="White" HorizontalAlignment="Left" FontFamily="Segoe UI Semibold"/>
 
             <Label x:Name="lbLdrBrdName" Visibility="Collapsed" Content="Leaderboard" HorizontalContentAlignment="Center" FontSize="13" FontWeight="Bold" Margin="689,295,0,0" VerticalAlignment="Top" Width="87" Foreground="White" HorizontalAlignment="Left" FontFamily="Segoe UI Semibold"/>
-            <Button x:Name="btnLeaderboard" Content="" HorizontalAlignment="Left" Width="55" Height="55" BorderThickness="2" Margin="705,324,0,0" VerticalAlignment="Top" BorderBrush="#FF5284FF" Foreground="{x:Null}" RenderTransformOrigin="0.636,0.837" MouseEnter="btnLeaderboard_MouseEnter" MouseLeave="btnLeaderboard_MouseLeave" Click="btnLeaderboard_Click">
+            <Button x:Name="btnLeaderboard" Content="" HorizontalAlignment="Left" Width="55" Height="55" BorderThickness="2" Margin="705,324,0,0" VerticalAlignment="Top" BorderBrush="#FF5284FF" Foreground="{x:Null}" RenderTransformOrigin="0.636,0.837" Click="btnLeaderboard_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="/Leaderboard.jpg"/>
                 </Button.Background>
