@@ -31,6 +31,8 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
         private List<KeyValuePair<string, string[]>> _sortedUserDataMedium = new List<KeyValuePair<string, string[]>>();
         private List<KeyValuePair<string, string[]>> _sortedUserDataHard = new List<KeyValuePair<string, string[]>>();
 
+        private int _pageNum = 1;
+
         SoundSystem sound = new SoundSystem();
 
         public MainWindow()
@@ -362,6 +364,84 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
                     textBoxScore.Text = "0";
                 }
             }
+        }
+        #endregion
+
+
+        #region Instructions Section
+        private void btnInstructions_Click(object sender, RoutedEventArgs e)
+        {
+            sound.Initialize("clickyes.wav", 5, false);
+
+            gLeaderboard.Visibility = Visibility.Collapsed;
+
+            _pageNum = 1;
+            HideAllPages();
+            ShowPageNum(1);
+        }
+
+        private void btnBackInstructions_Click(object sender, RoutedEventArgs e)
+        {
+            sound.Initialize("clickno.wav", 5, false);
+
+            gLeaderboard.Visibility = Visibility.Visible;
+        }
+
+        private void btnRight_Click(object sender, RoutedEventArgs e)
+        {
+            sound.Initialize("clickno.wav", 5, false);
+
+            HideAllPages();
+
+            _pageNum++;
+            if (_pageNum > 5)
+                _pageNum = 1;
+
+            ShowPageNum(_pageNum);
+        }
+
+        private void btnLeft_Click(object sender, RoutedEventArgs e)
+        {
+            sound.Initialize("clickyes.wav", 5, false);
+
+            HideAllPages();
+
+            _pageNum--;
+            if (_pageNum < 1)
+                _pageNum = 5;
+
+            ShowPageNum(_pageNum);
+        }
+
+        private void ShowPageNum(int pageNum)
+        {
+            switch (pageNum)
+            {
+                case 1:
+                    imgInstructionsPage1.Visibility = Visibility.Visible;
+                    break;
+                case 2:
+                    imgInstructionsPage2.Visibility = Visibility.Visible;
+                    break;
+                case 3:
+                    imgInstructionsPage3.Visibility = Visibility.Visible;
+                    break;
+                case 4:
+                    imgInstructionsPage4.Visibility = Visibility.Visible;
+                    break;
+                case 5:
+                    imgInstructionsPage5.Visibility = Visibility.Visible;
+                    break;
+            }
+        }
+
+        private void HideAllPages()
+        {
+            imgInstructionsPage1.Visibility = Visibility.Collapsed;
+            imgInstructionsPage2.Visibility = Visibility.Collapsed;
+            imgInstructionsPage3.Visibility = Visibility.Collapsed;
+            imgInstructionsPage4.Visibility = Visibility.Collapsed;
+            imgInstructionsPage5.Visibility = Visibility.Collapsed;
         }
         #endregion
     }

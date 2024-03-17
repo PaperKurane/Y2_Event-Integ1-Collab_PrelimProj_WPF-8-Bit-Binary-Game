@@ -41,7 +41,6 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             if (_CurrAudio.ContainsKey(fileName))
             {
                 _CurrAudio[fileName].Play();
-                
             }
         }
 

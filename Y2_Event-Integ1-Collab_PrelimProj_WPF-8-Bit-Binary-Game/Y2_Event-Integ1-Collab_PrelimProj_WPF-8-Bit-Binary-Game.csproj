@@ -117,6 +117,18 @@
     <Resource Include="Leaderboard.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="GameResources\1.jpg" />
+    <Resource Include="GameResources\2.jpg" />
+    <Resource Include="GameResources\3.jpg" />
+    <Resource Include="GameResources\4.jpg" />
+    <Resource Include="GameResources\5.jpg" />
+    <Resource Include="1.jpg" />
+    <Resource Include="GameResources\Arrow.png" />
+    <Resource Include="Arrow.png" />
+    <Resource Include="2.jpg" />
+    <Resource Include="3.jpg" />
+    <Resource Include="4.jpg" />
+    <Resource Include="5.jpg" />
     <Content Include="Sounds\1.wav" />
     <Content Include="Sounds\2.wav" />
     <Content Include="Sounds\3.wav" />

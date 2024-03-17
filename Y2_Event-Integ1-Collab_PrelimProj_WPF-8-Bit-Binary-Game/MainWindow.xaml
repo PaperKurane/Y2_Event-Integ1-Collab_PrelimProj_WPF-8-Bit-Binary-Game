@@ -5,101 +5,70 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" ResizeMode="NoResize">
-    <Grid x:Name="gLeaderboard" Visibility="Visible">
+        Title="Bit Masters" Height="450" Width="800" ResizeMode="NoResize">
+    <Grid x:Name="gInstructions" Visibility="Visible">
         <Grid.Background>
             <ImageBrush ImageSource="GameResources/GameBackground-Realistic.png"/>
         </Grid.Background>
 
-        <Image x:Name="imgGameLogoSmaller" HorizontalAlignment="Left" Height="133" Margin="242,3,0,0" VerticalAlignment="Top" Width="308" Source="/Bit Masters Logo.png" RenderTransformOrigin="0.5,0.5">
-            <Image.RenderTransform>
-                <TranslateTransform Y="0"/>
-            </Image.RenderTransform>
-            <Image.Triggers>
-                <EventTrigger RoutedEvent="Loaded">
-                    <BeginStoryboard>
-                        <Storyboard RepeatBehavior="Forever">
-                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)">
-                                <DiscreteDoubleKeyFrame KeyTime="0:0:0.4" Value="-4"/>
-                                <DiscreteDoubleKeyFrame KeyTime="0:0:0.8" Value="0"/>
-                            </DoubleAnimationUsingKeyFrames>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </Image.Triggers>
-        </Image>
+        <Image x:Name="imgInstructionsPage1" Visibility="Visible" Height="307" VerticalAlignment="Top" Source="/1.jpg" Margin="116,48,130,0"/>
+        <Image x:Name="imgInstructionsPage2" Visibility="Collapsed" Height="307" VerticalAlignment="Top" Source="/2.jpg" Margin="116,48,130,0"/>
+        <Image x:Name="imgInstructionsPage3" Visibility="Collapsed" Height="307" VerticalAlignment="Top" Source="/3.jpg" Margin="116,48,130,0"/>
+        <Image x:Name="imgInstructionsPage4" Visibility="Collapsed" Height="307" VerticalAlignment="Top" Source="/4.jpg" Margin="116,48,130,0"/>
+        <Image x:Name="imgInstructionsPage5" Visibility="Collapsed" Height="307" VerticalAlignment="Top" Source="/5.jpg" Margin="116,48,130,0"/>
 
-        <Button x:Name="btnLdrBrdBack" Visibility="Visible" Content="Back" HorizontalContentAlignment="Center" FontSize="30" Margin="657,339,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="94" FontFamily="Segoe UI Semibold" FontWeight="Bold" Height="39" Click="btnLdrBrdBack_Click"/>
+        <Button x:Name="btnBackInstructions" Visibility="Visible" Content="Back" HorizontalContentAlignment="Center" FontSize="30" Margin="346,355,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="94" FontFamily="Segoe UI Semibold" FontWeight="Bold" Height="39" Click="btnBackInstructions_Click"/>
+        <Label x:Name="lbInstructions" Content="How to Play" HorizontalContentAlignment="Center" FontSize="36" FontWeight="Bold" VerticalAlignment="Top" Foreground="White" HorizontalAlignment="Left" Width="786"/>
 
-        <!--#region Left Column-->
-        <Label x:Name="lbColumnLabels" Visibility="Visible" Content="Name                                                       Time        Points" HorizontalContentAlignment="Left" FontSize="12" FontWeight="Bold" Margin="69,123,0,0" VerticalAlignment="Top" Width="313" Foreground="White" HorizontalAlignment="Left" FontFamily="Segoe UI Semibold"/>
+        <Button x:Name="btnRight" Content="" Height="55" BorderThickness="2" Margin="721,169,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="{x:Null}" RenderTransformOrigin="0.509,0.504" Click="btnRight_Click" MouseEnter="btnLeaderboard_MouseEnter" MouseLeave="btnLeaderboard_MouseLeave" HorizontalAlignment="Left" Width="55">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+            <Button.Background>
+                <ImageBrush ImageSource="/Arrow.png"/>
+            </Button.Background>
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
 
-        <TextBox x:Name="tbPlaceNum1" Text="1" FontSize="16" Width="31" Height="31" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="38,147,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FFF44336" Foreground="White" SelectionBrush="{x:Null}"/>
-        <TextBox x:Name="tbPlace1" Text="  ---" FontSize="16" FontWeight="Regular" TextAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="69,147,0,0" TextWrapping="Wrap" Width="193" Height="31" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF2D3F50" Foreground="White" SelectionBrush="{x:Null}"/>
-        <TextBox x:Name="tbPlaceTime1" Text="0" FontSize="16" Width="80" Height="31" FontWeight="Regular" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="262,147,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF2D3F50" Foreground="White" SelectionBrush="{x:Null}"/>
-        <TextBox x:Name="tbPlaceScore1" Text="0" FontSize="16" Width="31" Height="31" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="342,147,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FFF44336" Foreground="White" SelectionBrush="{x:Null}"/>
-
-        <TextBox x:Name="tbPlaceNum2" Text="2" FontSize="16" Width="31" Height="31" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="38,183,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF9800" Foreground="White" SelectionBrush="{x:Null}"/>
-        <TextBox x:Name="tbPlace2" Text="  ---" FontSize="16" FontWeight="Regular" TextAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="69,183,0,0" TextWrapping="Wrap" Width="193" Height="31" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF2D3F50" Foreground="White" SelectionBrush="{x:Null}"/>
-        <TextBox x:Name="tbPlaceTime2" Text="0" FontSize="16" Width="80" Height="31" FontWeight="Regular" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="262,183,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF2D3F50" Foreground="White" SelectionBrush="{x:Null}"/>
-        <TextBox x:Name="tbPlaceScore2" Text="0" FontSize="16" Width="31" Height="31" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="342,183,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF9800" Foreground="White" SelectionBrush="{x:Null}"/>
-
-        <TextBox x:Name="tbPlaceNum3" Text="3" FontSize="16" Width="31" Height="31" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="38,219,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FFEB3B" Foreground="White" SelectionBrush="{x:Null}"/>
-        <TextBox x:Name="tbPlace3" Text="  ---" FontSize="16" FontWeight="Regular" TextAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="69,219,0,0" TextWrapping="Wrap" Width="193" Height="31" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF2D3F50" Foreground="White" SelectionBrush="{x:Null}"/>
-        <TextBox x:Name="tbPlaceTime3" Text="0" FontSize="16" Width="80" Height="31" FontWeight="Regular" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="262,219,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF2D3F50" Foreground="White" SelectionBrush="{x:Null}"/>
-        <TextBox x:Name="tbPlaceScore3" Text="0" FontSize="16" Width="31" Height="31" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="342,219,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FFEB3B" Foreground="White" SelectionBrush="{x:Null}"/>
-
-        <TextBox x:Name="tbPlaceNum4" Text="4" FontSize="16" Width="31" Height="31" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="38,255,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#CDDC39" Foreground="White" SelectionBrush="{x:Null}"/>
-        <TextBox x:Name="tbPlace4" Text="  ---" FontSize="16" FontWeight="Regular" TextAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="69,255,0,0" TextWrapping="Wrap" Width="193" Height="31" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF2D3F50" Foreground="White" SelectionBrush="{x:Null}"/>
-        <TextBox x:Name="tbPlaceTime4" Text="0" FontSize="16" Width="80" Height="31" FontWeight="Regular" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="262,255,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF2D3F50" Foreground="White" SelectionBrush="{x:Null}"/>
-        <TextBox x:Name="tbPlaceScore4" Text="0" FontSize="16" Width="31" Height="31" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="342,255,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#CDDC39" Foreground="White" SelectionBrush="{x:Null}"/>
-
-        <TextBox x:Name="tbPlaceNum5" Text="5" FontSize="16" Width="31" Height="31" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="38,291,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#4CAF50" Foreground="White" SelectionBrush="{x:Null}"/>
-        <TextBox x:Name="tbPlace5" Text="  ---" FontSize="16" FontWeight="Regular" TextAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="69,291,0,0" TextWrapping="Wrap" Width="193" Height="31" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF2D3F50" Foreground="White" SelectionBrush="{x:Null}"/>
-        <TextBox x:Name="tbPlaceTime5" Text="0" FontSize="16" Width="80" Height="31" FontWeight="Regular" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="262,291,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF2D3F50" Foreground="White" SelectionBrush="{x:Null}"/>
-        <TextBox x:Name="tbPlaceScore5" Text="0" FontSize="16" Width="31" Height="31" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="342,291,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#4CAF50" Foreground="White" SelectionBrush="{x:Null}"/>
-        <!--#endregion-->
-
-        <!--#region Right Column-->
-        <Label x:Name="lbColumnLabels2" Visibility="Visible" Content="Name                                                       Time        Points" HorizontalContentAlignment="Left" FontSize="12" FontWeight="Bold" Margin="446,123,0,0" VerticalAlignment="Top" Width="313" Foreground="White" HorizontalAlignment="Left" FontFamily="Segoe UI Semibold"/>
-
-        <TextBox x:Name="tbPlaceNum6" Text="6" FontSize="16" Width="31" Height="31" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="415,147,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#009688" Foreground="White" SelectionBrush="{x:Null}"/>
-        <TextBox x:Name="tbPlace6" Text="  ---" FontSize="16" FontWeight="Regular" TextAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="446,147,0,0" TextWrapping="Wrap" Width="193" Height="31" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF2D3F50" Foreground="White" SelectionBrush="{x:Null}"/>
-        <TextBox x:Name="tbPlaceTime6" Text="0" FontSize="16" Width="80" Height="31" FontWeight="Regular" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="639,147,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF2D3F50" Foreground="White" SelectionBrush="{x:Null}"/>
-        <TextBox x:Name="tbPlaceScore6" Text="0" FontSize="16" Width="31" Height="31" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="719,147,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#009688" Foreground="White" SelectionBrush="{x:Null}"/>
-
-        <TextBox x:Name="tbPlaceNum7" Text="7" FontSize="16" Width="31" Height="31" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="415,183,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#00BCD4" Foreground="White" SelectionBrush="{x:Null}"/>
-        <TextBox x:Name="tbPlace7" Text="  ---" FontSize="16" FontWeight="Regular" TextAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="446,183,0,0" TextWrapping="Wrap" Width="193" Height="31" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF2D3F50" Foreground="White" SelectionBrush="{x:Null}"/>
-        <TextBox x:Name="tbPlaceTime7" Text="0" FontSize="16" Width="80" Height="31" FontWeight="Regular" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="639,183,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF2D3F50" Foreground="White" SelectionBrush="{x:Null}"/>
-        <TextBox x:Name="tbPlaceScore7" Text="0" FontSize="16" Width="31" Height="31" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="719,183,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#00BCD4" Foreground="White" SelectionBrush="{x:Null}"/>
-
-        <TextBox x:Name="tbPlaceNum8" Text="8" FontSize="16" Width="31" Height="31" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="415,219,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#03A9F4" Foreground="White" SelectionBrush="{x:Null}"/>
-        <TextBox x:Name="tbPlace8" Text="  ---" FontSize="16" FontWeight="Regular" TextAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="446,219,0,0" TextWrapping="Wrap" Width="193" Height="31" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF2D3F50" Foreground="White" SelectionBrush="{x:Null}"/>
-        <TextBox x:Name="tbPlaceTime8" Text="0" FontSize="16" Width="80" Height="31" FontWeight="Regular" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="639,219,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF2D3F50" Foreground="White" SelectionBrush="{x:Null}"/>
-        <TextBox x:Name="tbPlaceScore8" Text="0" FontSize="16" Width="31" Height="31" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="719,219,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#03A9F4" Foreground="White" SelectionBrush="{x:Null}"/>
-
-        <TextBox x:Name="tbPlaceNum9" Text="9" FontSize="16" Width="31" Height="31" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="415,255,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF3E57E0" Foreground="White" SelectionBrush="{x:Null}"/>
-        <TextBox x:Name="tbPlace9" Text="  ---" FontSize="16" FontWeight="Regular" TextAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="446,255,0,0" TextWrapping="Wrap" Width="193" Height="31" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF2D3F50" Foreground="White" SelectionBrush="{x:Null}"/>
-        <TextBox x:Name="tbPlaceTime9" Text="0" FontSize="16" Width="80" Height="31" FontWeight="Regular" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="639,255,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF2D3F50" Foreground="White" SelectionBrush="{x:Null}"/>
-        <TextBox x:Name="tbPlaceScore9" Text="0" FontSize="16" Width="31" Height="31" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="719,255,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF3E57E0" Foreground="White" SelectionBrush="{x:Null}"/>
-
-        <TextBox x:Name="tbPlaceNum10" Text="10" FontSize="16" Width="31" Height="31" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="415,291,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#673AB7" Foreground="White" SelectionBrush="{x:Null}"/>
-        <TextBox x:Name="tbPlace10" Text="  ---" FontSize="16" FontWeight="Regular" TextAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="446,291,0,0" TextWrapping="Wrap" Width="193" Height="31" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF2D3F50" Foreground="White" SelectionBrush="{x:Null}"/>
-        <TextBox x:Name="tbPlaceTime10" Text="0" FontSize="16" Width="80" Height="31" FontWeight="Regular" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="639,291,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF2D3F50" Foreground="White" SelectionBrush="{x:Null}"/>
-        <TextBox x:Name="tbPlaceScore10" Text="0" FontSize="16" Width="31" Height="31" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="719,291,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#673AB7" Foreground="White" SelectionBrush="{x:Null}"/>
-        <!--#endregion-->
-
-        <RadioButton x:Name="rbLdrBrdEasy" Content="Easy" FontSize="24" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="43,347,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Semibold" Foreground="White" IsChecked="True" Checked="RadioButtonLeaderboard_Checked"/>
-        <RadioButton x:Name="rbLdrBrdMedium" Content="Medium" FontSize="24" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="136,347,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Semibold" Foreground="White" Checked="RadioButtonLeaderboard_Checked"/>
-        <RadioButton x:Name="rbLdrBrdHard" Content="Hard" FontSize="24" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="272,347,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Semibold" Foreground="White" Checked="RadioButtonLeaderboard_Checked"/>
+        <Button x:Name="btnLeft" Content="" HorizontalAlignment="Left" Width="56" Height="55" BorderThickness="2" Margin="10,170,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="{x:Null}" RenderTransformOrigin="0.509,0.504" Click="btnLeft_Click" MouseEnter="btnLeaderboard_MouseEnter" MouseLeave="btnLeaderboard_MouseLeave">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+            <Button.Background>
+                <ImageBrush ImageSource="/Arrow.png"/>
+            </Button.Background>
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
 
 
-        <Grid x:Name="gMain" Visibility="Visible">
+        <Grid x:Name="gLeaderboard" Visibility="Visible">
             <Grid.Background>
                 <ImageBrush ImageSource="GameResources/GameBackground-Realistic.png"/>
             </Grid.Background>
 
-            <Image HorizontalAlignment="Left" Height="210" Margin="141,13,0,0" VerticalAlignment="Top" Width="500" Source="/Bit Masters Logo.png" RenderTransformOrigin="0.5,0.5">
+            <Image x:Name="imgGameLogoSmaller" HorizontalAlignment="Left" Height="133" Margin="242,3,0,0" VerticalAlignment="Top" Width="308" Source="/Bit Masters Logo.png" RenderTransformOrigin="0.5,0.5">
                 <Image.RenderTransform>
                     <TranslateTransform Y="0"/>
                 </Image.RenderTransform>
@@ -108,7 +77,7 @@
                         <BeginStoryboard>
                             <Storyboard RepeatBehavior="Forever">
                                 <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)">
-                                    <DiscreteDoubleKeyFrame KeyTime="0:0:0.4" Value="-10"/>
+                                    <DiscreteDoubleKeyFrame KeyTime="0:0:0.4" Value="-4"/>
                                     <DiscreteDoubleKeyFrame KeyTime="0:0:0.8" Value="0"/>
                                 </DoubleAnimationUsingKeyFrames>
                             </Storyboard>
@@ -117,41 +86,130 @@
                 </Image.Triggers>
             </Image>
 
-            <Button x:Name="btnStart" Visibility="Visible" Content="Start" HorizontalContentAlignment="Center" FontSize="34" Margin="339,204,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="104" FontFamily="Segoe UI Semibold" FontWeight="Bold" Click="btnStart_Click"/>
-            <Button x:Name="btnInstructions" Visibility="Visible" Content="How to Play" HorizontalContentAlignment="Center" FontSize="34" Margin="282,266,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="218" FontFamily="Segoe UI Semibold" FontWeight="Bold"/>
-            <Button x:Name="btnQuitGame" Visibility="Visible" Content="Quit" HorizontalContentAlignment="Center" FontSize="34" Margin="344,328,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="94" FontFamily="Segoe UI Semibold" FontWeight="Bold" Click="btnQuitGame_Click"/>
+            <Button x:Name="btnLdrBrdBack" Visibility="Visible" Content="Back" HorizontalContentAlignment="Center" FontSize="30" Margin="657,339,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="94" FontFamily="Segoe UI Semibold" FontWeight="Bold" Height="39" Click="btnLdrBrdBack_Click"/>
 
-            <Button x:Name="btnContinue" Visibility="Collapsed" Content="Continue" HorizontalContentAlignment="Center" FontSize="30" Margin="594,282,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="157" FontFamily="Segoe UI Semibold" FontWeight="Bold" Click="btnContinue_Click" Height="39"/>
-            <Button x:Name="btnBack" Visibility="Collapsed" Content="Back" HorizontalContentAlignment="Center" FontSize="30" Margin="657,339,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="94" FontFamily="Segoe UI Semibold" FontWeight="Bold" Click="btnBack_Click" Height="39"/>
+            <!--#region Left Column-->
+            <Label x:Name="lbColumnLabels" Visibility="Visible" Content="Name                                                       Time        Points" HorizontalContentAlignment="Left" FontSize="12" FontWeight="Bold" Margin="69,123,0,0" VerticalAlignment="Top" Width="313" Foreground="White" HorizontalAlignment="Left" FontFamily="Segoe UI Semibold"/>
 
-            <Label x:Name="lbDifficultyLabel" Visibility="Collapsed" Content="Please select a difficulty:" HorizontalContentAlignment="Left" FontSize="20" FontWeight="Bold" Margin="59,196,0,0" VerticalAlignment="Top" Width="289" Foreground="White" HorizontalAlignment="Left" FontFamily="Segoe UI Semibold"/>
-            <TextBox x:Name="tbDifficultyDesc" Visibility="Collapsed" Text="" HorizontalAlignment="Left" Margin="59,233,0,0" TextWrapping="Wrap" FontSize="18" FontFamily="Segoe UI Semibold" FontWeight="Bold" Padding="10" VerticalAlignment="Top" Width="294" Height="144" Background="#FF4D60CC" BorderBrush="White" Foreground="White" SelectionBrush="{x:Null}"/>
+            <TextBox x:Name="tbPlaceNum1" Text="1" FontSize="16" Width="31" Height="31" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="38,147,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FFF44336" Foreground="White" SelectionBrush="{x:Null}"/>
+            <TextBox x:Name="tbPlace1" Text="  ---" FontSize="16" FontWeight="Regular" TextAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="69,147,0,0" TextWrapping="Wrap" Width="193" Height="31" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF2D3F50" Foreground="White" SelectionBrush="{x:Null}"/>
+            <TextBox x:Name="tbPlaceTime1" Text="0" FontSize="16" Width="80" Height="31" FontWeight="Regular" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="262,147,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF2D3F50" Foreground="White" SelectionBrush="{x:Null}"/>
+            <TextBox x:Name="tbPlaceScore1" Text="0" FontSize="16" Width="31" Height="31" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="342,147,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FFF44336" Foreground="White" SelectionBrush="{x:Null}"/>
 
-            <RadioButton x:Name="rbEasy" Visibility="Collapsed" Content=" Easy" FontSize="30" FontFamily="Segoe UI Semibold" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="371,241,0,0" VerticalAlignment="Top" Width="165" Foreground="White" Background="White" Checked="RadioButton_Checked"/>
-            <RadioButton x:Name="rbMedium" Visibility="Collapsed" Content=" Medium" FontSize="30" FontFamily="Segoe UI Semibold" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="371,285,0,0" VerticalAlignment="Top" Width="165" Foreground="White" Background="White" Checked="RadioButton_Checked" IsChecked="True"/>
-            <RadioButton x:Name="rbHard" Visibility="Collapsed" Content=" Hard" FontSize="30" FontFamily="Segoe UI Semibold" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="371,329,0,0" VerticalAlignment="Top" Width="165" Foreground="White" Background="White" RenderTransformOrigin="0.484,0.94" Checked="RadioButton_Checked"/>
+            <TextBox x:Name="tbPlaceNum2" Text="2" FontSize="16" Width="31" Height="31" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="38,183,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF9800" Foreground="White" SelectionBrush="{x:Null}"/>
+            <TextBox x:Name="tbPlace2" Text="  ---" FontSize="16" FontWeight="Regular" TextAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="69,183,0,0" TextWrapping="Wrap" Width="193" Height="31" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF2D3F50" Foreground="White" SelectionBrush="{x:Null}"/>
+            <TextBox x:Name="tbPlaceTime2" Text="0" FontSize="16" Width="80" Height="31" FontWeight="Regular" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="262,183,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF2D3F50" Foreground="White" SelectionBrush="{x:Null}"/>
+            <TextBox x:Name="tbPlaceScore2" Text="0" FontSize="16" Width="31" Height="31" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="342,183,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF9800" Foreground="White" SelectionBrush="{x:Null}"/>
 
-            <Label x:Name="lbVersionNum" Visibility="Visible" Content="BitMasters Alpha 1.0.0" HorizontalContentAlignment="Left" FontSize="14" FontWeight="Bold" Margin="0,383,0,0" VerticalAlignment="Top" Width="149" Foreground="White" HorizontalAlignment="Left" FontFamily="Segoe UI Semibold"/>
-            <Label x:Name="lbCopyright" Visibility="Visible" Content="Copyright Cloductions. Do not distribute!" HorizontalContentAlignment="Right" FontSize="14" FontWeight="Bold" Margin="513,383,0,0" VerticalAlignment="Top" Width="273" Foreground="White" HorizontalAlignment="Left" FontFamily="Segoe UI Semibold"/>
+            <TextBox x:Name="tbPlaceNum3" Text="3" FontSize="16" Width="31" Height="31" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="38,219,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FFEB3B" Foreground="White" SelectionBrush="{x:Null}"/>
+            <TextBox x:Name="tbPlace3" Text="  ---" FontSize="16" FontWeight="Regular" TextAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="69,219,0,0" TextWrapping="Wrap" Width="193" Height="31" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF2D3F50" Foreground="White" SelectionBrush="{x:Null}"/>
+            <TextBox x:Name="tbPlaceTime3" Text="0" FontSize="16" Width="80" Height="31" FontWeight="Regular" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="262,219,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF2D3F50" Foreground="White" SelectionBrush="{x:Null}"/>
+            <TextBox x:Name="tbPlaceScore3" Text="0" FontSize="16" Width="31" Height="31" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="342,219,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FFEB3B" Foreground="White" SelectionBrush="{x:Null}"/>
 
-            <Label x:Name="lbLdrBrdName" Visibility="Collapsed" Content="Leaderboard" HorizontalContentAlignment="Center" FontSize="13" FontWeight="Bold" Margin="689,295,0,0" VerticalAlignment="Top" Width="87" Foreground="White" HorizontalAlignment="Left" FontFamily="Segoe UI Semibold"/>
-            <Button x:Name="btnLeaderboard" Content="" HorizontalAlignment="Left" Width="55" Height="55" BorderThickness="2" Margin="705,324,0,0" VerticalAlignment="Top" BorderBrush="#FF5284FF" Foreground="{x:Null}" RenderTransformOrigin="0.636,0.837" Click="btnLeaderboard_Click">
-                <Button.Background>
-                    <ImageBrush ImageSource="/Leaderboard.jpg"/>
-                </Button.Background>
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
-                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
+            <TextBox x:Name="tbPlaceNum4" Text="4" FontSize="16" Width="31" Height="31" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="38,255,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#CDDC39" Foreground="White" SelectionBrush="{x:Null}"/>
+            <TextBox x:Name="tbPlace4" Text="  ---" FontSize="16" FontWeight="Regular" TextAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="69,255,0,0" TextWrapping="Wrap" Width="193" Height="31" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF2D3F50" Foreground="White" SelectionBrush="{x:Null}"/>
+            <TextBox x:Name="tbPlaceTime4" Text="0" FontSize="16" Width="80" Height="31" FontWeight="Regular" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="262,255,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF2D3F50" Foreground="White" SelectionBrush="{x:Null}"/>
+            <TextBox x:Name="tbPlaceScore4" Text="0" FontSize="16" Width="31" Height="31" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="342,255,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#CDDC39" Foreground="White" SelectionBrush="{x:Null}"/>
+
+            <TextBox x:Name="tbPlaceNum5" Text="5" FontSize="16" Width="31" Height="31" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="38,291,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#4CAF50" Foreground="White" SelectionBrush="{x:Null}"/>
+            <TextBox x:Name="tbPlace5" Text="  ---" FontSize="16" FontWeight="Regular" TextAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="69,291,0,0" TextWrapping="Wrap" Width="193" Height="31" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF2D3F50" Foreground="White" SelectionBrush="{x:Null}"/>
+            <TextBox x:Name="tbPlaceTime5" Text="0" FontSize="16" Width="80" Height="31" FontWeight="Regular" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="262,291,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF2D3F50" Foreground="White" SelectionBrush="{x:Null}"/>
+            <TextBox x:Name="tbPlaceScore5" Text="0" FontSize="16" Width="31" Height="31" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="342,291,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#4CAF50" Foreground="White" SelectionBrush="{x:Null}"/>
+            <!--#endregion-->
+
+            <!--#region Right Column-->
+            <Label x:Name="lbColumnLabels2" Visibility="Visible" Content="Name                                                       Time        Points" HorizontalContentAlignment="Left" FontSize="12" FontWeight="Bold" Margin="446,123,0,0" VerticalAlignment="Top" Width="313" Foreground="White" HorizontalAlignment="Left" FontFamily="Segoe UI Semibold"/>
+
+            <TextBox x:Name="tbPlaceNum6" Text="6" FontSize="16" Width="31" Height="31" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="415,147,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#009688" Foreground="White" SelectionBrush="{x:Null}"/>
+            <TextBox x:Name="tbPlace6" Text="  ---" FontSize="16" FontWeight="Regular" TextAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="446,147,0,0" TextWrapping="Wrap" Width="193" Height="31" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF2D3F50" Foreground="White" SelectionBrush="{x:Null}"/>
+            <TextBox x:Name="tbPlaceTime6" Text="0" FontSize="16" Width="80" Height="31" FontWeight="Regular" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="639,147,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF2D3F50" Foreground="White" SelectionBrush="{x:Null}"/>
+            <TextBox x:Name="tbPlaceScore6" Text="0" FontSize="16" Width="31" Height="31" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="719,147,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#009688" Foreground="White" SelectionBrush="{x:Null}"/>
+
+            <TextBox x:Name="tbPlaceNum7" Text="7" FontSize="16" Width="31" Height="31" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="415,183,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#00BCD4" Foreground="White" SelectionBrush="{x:Null}"/>
+            <TextBox x:Name="tbPlace7" Text="  ---" FontSize="16" FontWeight="Regular" TextAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="446,183,0,0" TextWrapping="Wrap" Width="193" Height="31" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF2D3F50" Foreground="White" SelectionBrush="{x:Null}"/>
+            <TextBox x:Name="tbPlaceTime7" Text="0" FontSize="16" Width="80" Height="31" FontWeight="Regular" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="639,183,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF2D3F50" Foreground="White" SelectionBrush="{x:Null}"/>
+            <TextBox x:Name="tbPlaceScore7" Text="0" FontSize="16" Width="31" Height="31" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="719,183,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#00BCD4" Foreground="White" SelectionBrush="{x:Null}"/>
+
+            <TextBox x:Name="tbPlaceNum8" Text="8" FontSize="16" Width="31" Height="31" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="415,219,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#03A9F4" Foreground="White" SelectionBrush="{x:Null}"/>
+            <TextBox x:Name="tbPlace8" Text="  ---" FontSize="16" FontWeight="Regular" TextAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="446,219,0,0" TextWrapping="Wrap" Width="193" Height="31" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF2D3F50" Foreground="White" SelectionBrush="{x:Null}"/>
+            <TextBox x:Name="tbPlaceTime8" Text="0" FontSize="16" Width="80" Height="31" FontWeight="Regular" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="639,219,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF2D3F50" Foreground="White" SelectionBrush="{x:Null}"/>
+            <TextBox x:Name="tbPlaceScore8" Text="0" FontSize="16" Width="31" Height="31" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="719,219,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#03A9F4" Foreground="White" SelectionBrush="{x:Null}"/>
+
+            <TextBox x:Name="tbPlaceNum9" Text="9" FontSize="16" Width="31" Height="31" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="415,255,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF3E57E0" Foreground="White" SelectionBrush="{x:Null}"/>
+            <TextBox x:Name="tbPlace9" Text="  ---" FontSize="16" FontWeight="Regular" TextAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="446,255,0,0" TextWrapping="Wrap" Width="193" Height="31" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF2D3F50" Foreground="White" SelectionBrush="{x:Null}"/>
+            <TextBox x:Name="tbPlaceTime9" Text="0" FontSize="16" Width="80" Height="31" FontWeight="Regular" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="639,255,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF2D3F50" Foreground="White" SelectionBrush="{x:Null}"/>
+            <TextBox x:Name="tbPlaceScore9" Text="0" FontSize="16" Width="31" Height="31" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="719,255,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF3E57E0" Foreground="White" SelectionBrush="{x:Null}"/>
+
+            <TextBox x:Name="tbPlaceNum10" Text="10" FontSize="16" Width="31" Height="31" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="415,291,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#673AB7" Foreground="White" SelectionBrush="{x:Null}"/>
+            <TextBox x:Name="tbPlace10" Text="  ---" FontSize="16" FontWeight="Regular" TextAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="446,291,0,0" TextWrapping="Wrap" Width="193" Height="31" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF2D3F50" Foreground="White" SelectionBrush="{x:Null}"/>
+            <TextBox x:Name="tbPlaceTime10" Text="0" FontSize="16" Width="80" Height="31" FontWeight="Regular" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="639,291,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#FF2D3F50" Foreground="White" SelectionBrush="{x:Null}"/>
+            <TextBox x:Name="tbPlaceScore10" Text="0" FontSize="16" Width="31" Height="31" FontWeight="Bold" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="719,291,0,0" TextWrapping="Wrap" BorderBrush="{x:Null}" VerticalContentAlignment="Center" IsReadOnly="True" Background="#673AB7" Foreground="White" SelectionBrush="{x:Null}"/>
+            <!--#endregion-->
+
+            <RadioButton x:Name="rbLdrBrdEasy" Content="Easy" FontSize="24" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="43,347,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Semibold" Foreground="White" IsChecked="True" Checked="RadioButtonLeaderboard_Checked"/>
+            <RadioButton x:Name="rbLdrBrdMedium" Content="Medium" FontSize="24" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="136,347,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Semibold" Foreground="White" Checked="RadioButtonLeaderboard_Checked"/>
+            <RadioButton x:Name="rbLdrBrdHard" Content="Hard" FontSize="24" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="272,347,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Semibold" Foreground="White" Checked="RadioButtonLeaderboard_Checked"/>
 
 
+            <Grid x:Name="gMain" Visibility="Visible">
+                <Grid.Background>
+                    <ImageBrush ImageSource="GameResources/GameBackground-Realistic.png"/>
+                </Grid.Background>
+
+                <Image HorizontalAlignment="Left" Height="210" Margin="141,13,0,0" VerticalAlignment="Top" Width="500" Source="/Bit Masters Logo.png" RenderTransformOrigin="0.5,0.5">
+                    <Image.RenderTransform>
+                        <TranslateTransform Y="0"/>
+                    </Image.RenderTransform>
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="Loaded">
+                            <BeginStoryboard>
+                                <Storyboard RepeatBehavior="Forever">
+                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)">
+                                        <DiscreteDoubleKeyFrame KeyTime="0:0:0.4" Value="-10"/>
+                                        <DiscreteDoubleKeyFrame KeyTime="0:0:0.8" Value="0"/>
+                                    </DoubleAnimationUsingKeyFrames>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+
+                <Button x:Name="btnStart" Visibility="Visible" Content="Start" HorizontalContentAlignment="Center" FontSize="34" Margin="339,204,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="104" FontFamily="Segoe UI Semibold" FontWeight="Bold" Click="btnStart_Click"/>
+                <Button x:Name="btnInstructions" Visibility="Visible" Content="How to Play" HorizontalContentAlignment="Center" FontSize="34" Margin="282,266,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="218" FontFamily="Segoe UI Semibold" FontWeight="Bold" Click="btnInstructions_Click"/>
+                <Button x:Name="btnQuitGame" Visibility="Visible" Content="Quit" HorizontalContentAlignment="Center" FontSize="34" Margin="344,328,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="94" FontFamily="Segoe UI Semibold" FontWeight="Bold" Click="btnQuitGame_Click"/>
+
+                <Button x:Name="btnContinue" Visibility="Collapsed" Content="Continue" HorizontalContentAlignment="Center" FontSize="30" Margin="594,282,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="157" FontFamily="Segoe UI Semibold" FontWeight="Bold" Click="btnContinue_Click" Height="39"/>
+                <Button x:Name="btnBack" Visibility="Collapsed" Content="Back" HorizontalContentAlignment="Center" FontSize="30" Margin="657,339,0,0" VerticalAlignment="Top" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="94" FontFamily="Segoe UI Semibold" FontWeight="Bold" Click="btnBack_Click" Height="39"/>
+
+                <Label x:Name="lbDifficultyLabel" Visibility="Collapsed" Content="Please select a difficulty:" HorizontalContentAlignment="Left" FontSize="20" FontWeight="Bold" Margin="59,196,0,0" VerticalAlignment="Top" Width="289" Foreground="White" HorizontalAlignment="Left" FontFamily="Segoe UI Semibold"/>
+                <TextBox x:Name="tbDifficultyDesc" Visibility="Collapsed" Text="" HorizontalAlignment="Left" Margin="59,233,0,0" TextWrapping="Wrap" FontSize="18" FontFamily="Segoe UI Semibold" FontWeight="Bold" Padding="10" VerticalAlignment="Top" Width="294" Height="144" Background="#FF4D60CC" BorderBrush="White" Foreground="White" SelectionBrush="{x:Null}"/>
+
+                <RadioButton x:Name="rbEasy" Visibility="Collapsed" Content=" Easy" FontSize="30" FontFamily="Segoe UI Semibold" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="371,241,0,0" VerticalAlignment="Top" Width="165" Foreground="White" Background="White" Checked="RadioButton_Checked"/>
+                <RadioButton x:Name="rbMedium" Visibility="Collapsed" Content=" Medium" FontSize="30" FontFamily="Segoe UI Semibold" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="371,285,0,0" VerticalAlignment="Top" Width="165" Foreground="White" Background="White" Checked="RadioButton_Checked" IsChecked="True"/>
+                <RadioButton x:Name="rbHard" Visibility="Collapsed" Content=" Hard" FontSize="30" FontFamily="Segoe UI Semibold" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="371,329,0,0" VerticalAlignment="Top" Width="165" Foreground="White" Background="White" RenderTransformOrigin="0.484,0.94" Checked="RadioButton_Checked"/>
+
+                <Label x:Name="lbVersionNum" Visibility="Visible" Content="BitMasters Alpha 1.0.0" HorizontalContentAlignment="Left" FontSize="14" FontWeight="Bold" Margin="0,383,0,0" VerticalAlignment="Top" Width="149" Foreground="White" HorizontalAlignment="Left" FontFamily="Segoe UI Semibold"/>
+                <Label x:Name="lbCopyright" Visibility="Visible" Content="Copyright Cloductions. Do not distribute!" HorizontalContentAlignment="Right" FontSize="14" FontWeight="Bold" Margin="513,383,0,0" VerticalAlignment="Top" Width="273" Foreground="White" HorizontalAlignment="Left" FontFamily="Segoe UI Semibold"/>
+
+                <Label x:Name="lbLdrBrdName" Visibility="Collapsed" Content="Leaderboards" HorizontalContentAlignment="Center" FontSize="13" FontWeight="Bold" Margin="686,296,0,0" VerticalAlignment="Top" Width="94" Foreground="White" HorizontalAlignment="Left" FontFamily="Segoe UI Semibold"/>
+                <Button x:Name="btnLeaderboard" Content="" HorizontalAlignment="Left" Width="55" Height="55" BorderThickness="2" Margin="705,324,0,0" VerticalAlignment="Top" BorderBrush="#FF5284FF" Foreground="{x:Null}" RenderTransformOrigin="0.636,0.837" Click="btnLeaderboard_Click" MouseEnter="btnLeaderboard_MouseEnter" MouseLeave="btnLeaderboard_MouseLeave">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Leaderboard.jpg"/>
+                    </Button.Background>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+
+            </Grid>
         </Grid>
 
         <Rectangle x:Name="rBorderReference" Grid.ColumnSpan="10" HorizontalAlignment="Left" Height="23" Margin="0,411,0,0" VerticalAlignment="Top" Width="800" Fill="Black" Stroke="Black"/>
-        <Rectangle x:Name="rBorderReferenceVertical" HorizontalAlignment="Left" Height="434" Margin="786,0,0,0" VerticalAlignment="Center" Width="16" Fill="Black" Stroke="Black"/>
+        <Rectangle x:Name="rBorderReferenceVertical" HorizontalAlignment="Left" Height="434" Margin="786,0,0,0" VerticalAlignment="Center" Width="14" Fill="Black" Stroke="Black"/>
     </Grid>
 </Window>
