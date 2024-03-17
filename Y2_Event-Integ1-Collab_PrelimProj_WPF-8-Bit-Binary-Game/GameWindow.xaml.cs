@@ -37,6 +37,8 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 
         bool _gameRestart = false;
 
+        SoundSystem sound = new SoundSystem();
+
         public GameWindow()
         {
             InitializeComponent();
@@ -203,9 +205,10 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
         private async void btnMega_Click(object sender, RoutedEventArgs e)
         {
             btnMega.FontSize = 84; // Default is 48
-            for (int x = 1; x >= 1; x--)
+            for (int x = 3; x >= 1; x--)
             {
                 btnMega.Content = x.ToString();
+                sound.Initialize(x + ".wav", 5);
                 await Task.Delay(1000);
             }
             btnMega.FontSize = 48;
@@ -294,6 +297,8 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             {
                 _dt.Stop();
                 _sessionTimer.Stop();
+
+                sound.Initialize("yikes.wav", 5);
 
                 DisableAllBinaryButtons(true);
 

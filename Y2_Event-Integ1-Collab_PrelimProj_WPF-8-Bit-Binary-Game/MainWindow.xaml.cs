@@ -31,9 +31,13 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
         private List<KeyValuePair<string, string[]>> _sortedUserDataMedium = new List<KeyValuePair<string, string[]>>();
         private List<KeyValuePair<string, string[]>> _sortedUserDataHard = new List<KeyValuePair<string, string[]>>();
 
+        SoundSystem sound = new SoundSystem();
+
         public MainWindow()
         {
             InitializeComponent();
+
+            sound.Initialize("Pull The Trigger - 8-Bit VRC6.wav", 0.05);
 
             string[] difficultiesforReading = new string[] {"Easy", "Medium", "Hard"};
             _userDataEasy = ReadLeaderboard(difficultiesforReading[0]);

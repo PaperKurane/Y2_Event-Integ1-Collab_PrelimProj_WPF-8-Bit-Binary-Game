@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="SoundSystem.cs" />
     <Compile Include="WindowManager.cs" />
     <Page Include="GameWindow.xaml">
       <SubType>Designer</SubType>
