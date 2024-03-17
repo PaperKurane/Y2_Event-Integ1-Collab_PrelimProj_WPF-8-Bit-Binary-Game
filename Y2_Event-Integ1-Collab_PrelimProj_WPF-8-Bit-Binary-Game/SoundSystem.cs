@@ -8,35 +8,49 @@ using System.Threading.Tasks;
 using System.Windows.Media;
 
 namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
-{
+{   
     internal class SoundSystem
     {
-        private MediaPlayer media;
-        public void Initialize(string fileName, double volume)
+        private static Dictionary<string, MediaPlayer> _CurrAudio = new Dictionary<string, MediaPlayer>();
+
+        public void Initialize(string fileName, double volume, bool loop)
         {
             string path = System.IO.Path.Combine(Environment.CurrentDirectory, @"Sounds\", fileName);
 
-            media = new MediaPlayer();
+            MediaPlayer media = new MediaPlayer();
             media.Open(new Uri(path));
+
+            if (loop)
+            {
+                media.MediaEnded += (sender, e) =>
+                {
+                    ((MediaPlayer)sender).Position = TimeSpan.Zero; // Restart playback from the beginning
+                    ((MediaPlayer)sender).Play(); // Resume playback
+                };
+            }
+
             media.Play();
 
-            Volume(volume);
+            media.Volume = Math.Max(0.0, Math.Min(5.0, volume));
+
+            _CurrAudio[fileName] = media;
         }
 
-        public void Volume(double volume)
+        public void Resume(string fileName)
         {
-            if (media != null)
-                media.Volume = Math.Max(0.0, Math.Min(5.0, volume));
+            if (_CurrAudio.ContainsKey(fileName))
+            {
+                _CurrAudio[fileName].Play();
+                
+            }
         }
 
-        public void Resume()
+        public void Pause(string fileName)
         {
-            media.Play();
-        }
-
-        public void Pause()
-        {
-            media.Pause();
+            if (_CurrAudio.ContainsKey(fileName))
+            {
+                _CurrAudio[fileName].Pause();
+            }
         }
     }
 }

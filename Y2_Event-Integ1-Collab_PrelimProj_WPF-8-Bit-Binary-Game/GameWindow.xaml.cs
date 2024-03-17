@@ -161,6 +161,8 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 
             lbStatusHandler(3);
 
+            sound.Resume("Pull The Trigger - 8-Bit VRC6.wav");
+
             DisableAllBinaryButtons(false);
             ResetAllBinaryButtons();
 
@@ -208,7 +210,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             for (int x = 3; x >= 1; x--)
             {
                 btnMega.Content = x.ToString();
-                sound.Initialize(x + ".wav", 5);
+                sound.Initialize(x + ".wav", 5, false);
                 await Task.Delay(1000);
             }
             btnMega.FontSize = 48;
@@ -298,8 +300,8 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
                 _dt.Stop();
                 _sessionTimer.Stop();
 
-                SoundSystem.Pause(); 
-                sound.Initialize("yikes.wav", 5);
+                sound.Pause("Pull The Trigger - 8-Bit VRC6.wav");
+                sound.Initialize("yikes.wav", 5, false);
 
                 DisableAllBinaryButtons(true);
 

@@ -116,5 +116,15 @@
   <ItemGroup>
     <Resource Include="Leaderboard.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Sounds\1.wav" />
+    <Content Include="Sounds\2.wav" />
+    <Content Include="Sounds\3.wav" />
+    <Content Include="Sounds\clickno.wav" />
+    <Content Include="Sounds\clickyes.wav" />
+    <Content Include="Sounds\Pull The Trigger - 8-Bit VRC6.wav" />
+    <Content Include="Sounds\timerwarning.wav" />
+    <Content Include="Sounds\yikes.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
