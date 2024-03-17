@@ -159,6 +159,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 
             lbStatusHandler(3);
 
+            DisableAllBinaryButtons(false);
             ResetAllBinaryButtons();
 
             btnSubmit.Content = "Submit";
@@ -294,6 +295,8 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
                 _dt.Stop();
                 _sessionTimer.Stop();
 
+                DisableAllBinaryButtons(true);
+
                 lbStatusHandler(2);
 
                 btnSubmit.Margin = new Thickness(395, 342, 0, 0);
@@ -410,6 +413,19 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 
             foreach (Button button in binaryButtons)
                 DefaultButtonAttributes(button);
+        }
+
+        private void DisableAllBinaryButtons(bool state)
+        {
+            Button[] binaryButtons = new Button[] { btnBinary128, btnBinary64, btnBinary32, btnBinary16, btnBinary8, btnBinary4, btnBinary2, btnBinary1 };
+
+            foreach (Button button in binaryButtons)
+            {
+                if (state == true)
+                    button.IsEnabled = false;
+                else
+                    button.IsEnabled = true;
+            }
         }
 
         private void DefaultButtonAttributes(Button button)
