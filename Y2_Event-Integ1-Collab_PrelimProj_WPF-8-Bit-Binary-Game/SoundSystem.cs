@@ -24,8 +24,8 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             {
                 media.MediaEnded += (sender, e) =>
                 {
-                    ((MediaPlayer)sender).Position = TimeSpan.Zero; // Restart playback from the beginning
-                    ((MediaPlayer)sender).Play(); // Resume playback
+                    ((MediaPlayer)sender).Position = TimeSpan.Zero; //loops the song lmao
+                    ((MediaPlayer)sender).Play();
                 };
             }
 
