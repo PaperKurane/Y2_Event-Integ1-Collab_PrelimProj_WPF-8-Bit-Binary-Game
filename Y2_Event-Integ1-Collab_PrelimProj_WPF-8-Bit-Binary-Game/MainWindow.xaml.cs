@@ -87,9 +87,12 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
                 while ((line = sr.ReadLine()) != null)
                 {
                     string[] read = line.Split(',');
-                    string key = read[0];
-                    string[] value = { read[1], read[2] };
-                    leaderboardData.Add(new KeyValuePair<string, string[]>(key, value));
+                    if (read.Length == 3)
+                    {
+                        string key = read[0];
+                        string[] value = { read[1], read[2] };
+                        leaderboardData.Add(new KeyValuePair<string, string[]>(key, value));
+                    }
                 }
             }
 

@@ -24,6 +24,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
     public partial class GameWindow : Window
     {
         DateTime _startTime;
+        DateTime _sessionStartTime;
         TimeSpan _totalTimeSpent;
         DispatcherTimer _dt = null;
         DispatcherTimer _sessionTimer = null;
@@ -183,15 +184,19 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 
         private void SessionTimer()
         {
-            _startTime = DateTime.Now;
+            _sessionStartTime = DateTime.Now;
 
             _sessionTimer = new DispatcherTimer();
             _sessionTimer.Interval = new TimeSpan(0, 0, 0, 1, 0);
-            _sessionTimer.Tick += (sender, e) =>
-            {
-                _totalTimeSpent += DateTime.Now - _startTime;
-            };
+            _sessionTimer.Tick += SessionTimer_Tick;
             _sessionTimer.Start();
+        }
+
+        private void SessionTimer_Tick(object sender, EventArgs e)
+        {
+            TimeSpan elapsedTime = DateTime.Now - _sessionStartTime;
+            _totalTimeSpent += elapsedTime; // Accumulate the total time spent
+            _sessionStartTime = DateTime.Now; // Reset the start time for the next interval
         }
 
         private async void btnMega_Click(object sender, RoutedEventArgs e)
@@ -434,7 +439,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
         private void btnResultSubmit_Click(object sender, RoutedEventArgs e)
         {
             string userName = tbUsername.Text.ToString();
-            string userTime = _totalTimeSpent.ToString(@"hh\:mm\:ss");
+            string userTime = _totalTimeSpent.ToString(@"mm\:ss\:fff");
             int userScore = _userScore;
 
             WindowManager._mainWin = true;
