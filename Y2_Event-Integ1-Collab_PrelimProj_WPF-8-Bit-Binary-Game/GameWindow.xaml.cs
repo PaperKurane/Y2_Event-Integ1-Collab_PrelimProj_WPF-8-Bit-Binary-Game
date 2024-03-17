@@ -83,7 +83,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
         
         private void UserDetails()
         {
-            lbTime.Content = "Time: " + _totalTimeSpent.ToString(@"hh\:mm\:ss");
+            lbTime.Content = "Time: " + _totalTimeSpent.ToString(@"mm\:ss\.fff");
             lbScore.Content = "Score: " + _userScore;
         }
 
@@ -121,31 +121,31 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             switch (_difficulty)
             {
                 case "Easy":
-                    List<int> easyNums = new List<int> { 15, 25, 35, 45, 55, 65, 75, 85, 96, 135 };
+                    List<int> easyNums = new List<int> {15, 25, 35, 45, 55, 65, 75, 85, 96};
 
-                    for (int x = 1; x < 256; x++)
+                    for (int x = 1; x < 129; x++)
                     {
                         if (x % 2 == 0)
                             easyNums.Add(x);
                     }
 
-                    if (_rnd.Next(0, 3) == 1) // 50% chance for one of these numbers to appear
-                        tbDecimalDisplay.Text = easyNums[_rnd.Next(0, easyNums.Count)].ToString();
+                    if (_rnd.Next(1, 3) == 1) // 50% chance for one of these numbers to appear
+                        tbDecimalDisplay.Text = easyNums[_rnd.Next(1, easyNums.Count)].ToString();
                     else
-                        tbDecimalDisplay.Text = _rnd.Next(0, 256).ToString();
+                        tbDecimalDisplay.Text = _rnd.Next(1, 129).ToString();
                     break;
 
                 case "Hard":
                     List<int> hardNums = new List<int> { 47, 91, 167, 189, 201, 226, 249 };
 
-                    if (_rnd.Next(0, 5) == 1) // 25% chance for one of these numbers to appear
-                        tbDecimalDisplay.Text = hardNums[_rnd.Next(0, hardNums.Count)].ToString();
+                    if (_rnd.Next(1, 3) == 1) // 50% chance for one of these numbers to appear
+                        tbDecimalDisplay.Text = hardNums[_rnd.Next(1, hardNums.Count)].ToString();
                     else
-                        tbDecimalDisplay.Text = _rnd.Next(0, 256).ToString();
+                        tbDecimalDisplay.Text = _rnd.Next(1, 256).ToString();
                     break;
 
                 default:
-                    tbDecimalDisplay.Text = _rnd.Next(0, 256).ToString();
+                    tbDecimalDisplay.Text = _rnd.Next(1, 256).ToString();
                     break;
             }
         }
@@ -314,11 +314,11 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             string[] gameMsg = new string[] { "I believe in you.", "You got this!", "Keep going!" };
 
             if (mode == 1)
-                lbStatus.Content = winMsg[_rnd.Next(0, winMsg.Length)];
+                lbStatus.Content = winMsg[_rnd.Next(1, winMsg.Length)];
             else if (mode == 2)
-                lbStatus.Content = loseMsg[_rnd.Next(0, loseMsg.Length)];
+                lbStatus.Content = loseMsg[_rnd.Next(1, loseMsg.Length)];
             else if (mode == 3)
-                lbStatus.Content = gameMsg[_rnd.Next(0, gameMsg.Length)];
+                lbStatus.Content = gameMsg[_rnd.Next(1, gameMsg.Length)];
         }
 
         private bool checkWin()
@@ -400,13 +400,13 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
                 button.Foreground = Brushes.White;
                 button.FontWeight = FontWeights.Bold;
             }
-            else // Default values
+            else
                 DefaultButtonAttributes(button);
         }
 
         private void ResetAllBinaryButtons()
         {
-            Button[] binaryButtons = new Button[] { btnBinary128, btnBinary64, btnBinary32, btnBinary16, btnBinary8, btnBinary4, btnBinary2, btnBinary1 };
+            Button[] binaryButtons = new Button[] {btnBinary128, btnBinary64, btnBinary32, btnBinary16, btnBinary8, btnBinary4, btnBinary2, btnBinary1};
 
             foreach (Button button in binaryButtons)
                 DefaultButtonAttributes(button);
@@ -439,13 +439,25 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
         private void btnResultSubmit_Click(object sender, RoutedEventArgs e)
         {
             string userName = tbUsername.Text.ToString();
-            string userTime = _totalTimeSpent.ToString(@"mm\:ss\:fff");
+            TimeSpan totalTime = GetTimeWithMilliseconds(_totalTimeSpent.ToString());
+            string userTime = totalTime.ToString(@"dd\:mm\:ss\.fff");
             int userScore = _userScore;
 
             WindowManager._mainWin = true;
             WindowManager._mainWindow = new MainWindow(userName, userTime, userScore, _difficulty);
             WindowManager._mainWindow.Show();
             WindowManager._gameWindow.Close();
+        }
+
+        private TimeSpan GetTimeWithMilliseconds(string totalTimeSpent)
+        {
+            string[] parts = totalTimeSpent.Split(':', '.');
+            int hours = int.Parse(parts[0]);
+            int minutes = int.Parse(parts[1]);
+            int seconds = int.Parse(parts[2]);
+            int milliseconds = int.Parse(parts[3].Substring(0, 3));
+
+            return new TimeSpan(0, hours, minutes, seconds, milliseconds);
         }
 
         private void btnResultCancel_Click(object sender, RoutedEventArgs e)

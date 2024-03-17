@@ -162,7 +162,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             switch (rbName)
             {
                 case "rbEasy":
-                    tbDifficultyDesc.Text = "Easy Mode\n- Chill, easy gameplay\n- Timer: 60 Seconds\n- Higher chance for easier numbers to appear.";
+                    tbDifficultyDesc.Text = "Easy Mode\n- Chill, easy gameplay\n- Timer: 60 Seconds\n- No numbers higher than 128.";
                     _difficulty = "Easy";
                     break;
                 case "rbMedium":
@@ -321,7 +321,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
                 if (textBoxName != null && textBoxTime != null && textBoxScore != null)
                 {
                     textBoxName.Text = " " + userData.Key;
-                    textBoxTime.Text = userData.Value[0];
+                    textBoxTime.Text = TimeSpan.Parse(userData.Value[0]).ToString(@"mm\:ss\.fff");
                     textBoxScore.Text = userData.Value[1];
                 }
             }
