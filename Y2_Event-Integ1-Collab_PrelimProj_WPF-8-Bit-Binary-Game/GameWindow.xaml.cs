@@ -174,7 +174,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             ResetAllBinaryButtons();
 
             btnSubmit.Content = "Submit";
-            btnSubmit.Margin = new Thickness(142, 342, 0, 0);
+            btnSubmit.Margin = new Thickness(134, 342, 0, 0);
             btnSubmit.Width = 516;
             btnSubmit.HorizontalAlignment = HorizontalAlignment.Left;
 
