@@ -28,5 +28,15 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             if (media != null)
                 media.Volume = Math.Max(0.0, Math.Min(5.0, volume));
         }
+
+        public void Resume()
+        {
+            media.Play();
+        }
+
+        public void Pause()
+        {
+            media.Pause();
+        }
     }
 }

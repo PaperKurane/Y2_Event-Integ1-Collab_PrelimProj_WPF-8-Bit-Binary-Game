@@ -298,6 +298,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
                 _dt.Stop();
                 _sessionTimer.Stop();
 
+                SoundSystem.Pause(); 
                 sound.Initialize("yikes.wav", 5);
 
                 DisableAllBinaryButtons(true);
