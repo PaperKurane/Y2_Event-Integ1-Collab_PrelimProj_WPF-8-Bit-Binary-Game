@@ -31,13 +31,12 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
         private List<KeyValuePair<string, string[]>> _sortedUserDataMedium = new List<KeyValuePair<string, string[]>>();
         private List<KeyValuePair<string, string[]>> _sortedUserDataHard = new List<KeyValuePair<string, string[]>>();
 
-        SoundSystem sound;
+        SoundSystem sound = new SoundSystem();
 
         public MainWindow()
         {
             InitializeComponent();
 
-            sound = new SoundSystem();
             sound.Initialize("Pull The Trigger - 8-Bit VRC6.wav", 0.05, true);
 
             string[] difficultiesforReading = new string[] {"Easy", "Medium", "Hard"};
@@ -133,6 +132,8 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
+            sound.Initialize("clickyes.wav", 5, false);
+
             if (!WindowManager._gameWin)
                 DifficultySelect();
             else
@@ -162,6 +163,8 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
+            sound.Initialize("clickyes.wav", 5, false);
+
             string rbName = ((RadioButton)sender).Name.ToString();
             
             switch (rbName)
@@ -183,6 +186,8 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 
         private void btnContinue_Click(object sender, RoutedEventArgs e)
         {
+            sound.Initialize("clickyes.wav", 5, false);
+
             WindowManager._mainWin = false;
 
             WindowManager._gameWindow = new GameWindow(_difficulty);
@@ -193,6 +198,8 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
+            sound.Initialize("clickno.wav", 5, false);
+
             btnBack.Visibility = Visibility.Collapsed;
 
             btnStart.Visibility = Visibility.Visible;
@@ -215,6 +222,8 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 
         private void btnQuitGame_Click(object sender, RoutedEventArgs e)
         {
+            sound.Initialize("clickno.wav", 5, false);
+
             this.Close();
         }
 
@@ -231,11 +240,15 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 
         private void btnLeaderboard_Click(object sender, RoutedEventArgs e)
         {
+            sound.Initialize("clickyes.wav", 5, false);
+
             gMain.Visibility = Visibility.Collapsed;
         }
 
         private void btnLdrBrdBack_Click(object sender, RoutedEventArgs e)
         {
+            sound.Initialize("clickno.wav", 5, false);
+
             gMain.Visibility = Visibility.Visible;
         }
 
@@ -295,6 +308,8 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 
         private void RadioButtonLeaderboard_Checked(object sender, RoutedEventArgs e)
         {
+            sound.Initialize("clickyes.wav", 5, false);
+
             string difficulty = (sender as RadioButton)?.Name.Replace("rbLdrBrd", "");
 
             switch (difficulty)

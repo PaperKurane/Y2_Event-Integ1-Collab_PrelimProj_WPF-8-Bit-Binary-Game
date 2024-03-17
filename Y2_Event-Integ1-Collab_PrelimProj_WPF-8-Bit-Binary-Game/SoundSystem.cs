@@ -52,5 +52,13 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
                 _CurrAudio[fileName].Pause();
             }
         }
+
+        public void Stop(string fileName)
+        {
+            if (_CurrAudio.ContainsKey(fileName))
+            {
+                _CurrAudio[fileName].Stop();
+            }
+        }
     }
 }

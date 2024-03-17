@@ -38,6 +38,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
         bool _gameRestart = false;
 
         SoundSystem sound = new SoundSystem();
+        bool _tenSecondsSound = false;
 
         public GameWindow()
         {
@@ -69,6 +70,9 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
+            sound.Initialize("clickno.wav", 5, false);
+            sound.Resume("Pull The Trigger - 8-Bit VRC6.wav");
+
             WindowManager._gameWin = false;
 
             if (!WindowManager._mainWin)
@@ -91,6 +95,8 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 
         private void StartGame()
         {
+            sound.Initialize("clickyes.wav", 5, false);
+
             btnSubmit.Visibility = Visibility.Collapsed;
             pbTimer1.Visibility = Visibility.Collapsed;
             pbTimer2.Visibility = Visibility.Collapsed;
@@ -161,6 +167,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 
             lbStatusHandler(3);
 
+            _tenSecondsSound = false;
             sound.Resume("Pull The Trigger - 8-Bit VRC6.wav");
 
             DisableAllBinaryButtons(false);
@@ -200,12 +207,14 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
         private void SessionTimer_Tick(object sender, EventArgs e)
         {
             TimeSpan elapsedTime = DateTime.Now - _sessionStartTime;
-            _totalTimeSpent += elapsedTime; // Accumulate the total time spent
-            _sessionStartTime = DateTime.Now; // Reset the start time for the next interval
+            _totalTimeSpent += elapsedTime;
+            _sessionStartTime = DateTime.Now; // Reset for next time
         }
 
         private async void btnMega_Click(object sender, RoutedEventArgs e)
         {
+            sound.Initialize("clickyes.wav", 5, false);
+
             btnMega.FontSize = 84; // Default is 48
             for (int x = 3; x >= 1; x--)
             {
@@ -244,6 +253,12 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             pbTimer1.Value = (remainingMilliseconds / _timeLeftInMilliseconds) * 100;
             pbTimer2.Value = 100 - pbTimer1.Value;
 
+            if (remainingMilliseconds <= 10000 && !_tenSecondsSound)
+            {
+                sound.Initialize("timerwarning.wav", 5, false);
+                _tenSecondsSound = true;
+            }
+
             if (remainingMilliseconds <= 0)
             {
                 _dt.Stop();
@@ -267,6 +282,8 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 
         private void btnSubmit_Click(object sender, RoutedEventArgs e)
         {
+            sound.Initialize("clickyes.wav", 5, false);
+
             if (_gameRestart)
                 ResetGame();
             else
@@ -374,27 +391,35 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             switch (btnName)
             {
                 case "btnBinary128":
+                    sound.Initialize("clickyes.wav", 4, false);
                     BtnChangeAppearance(sender);
                     break;
                 case "btnBinary64":
+                    sound.Initialize("clickno.wav", 4, false);
                     BtnChangeAppearance(sender);
                     break;
                 case "btnBinary32":
+                    sound.Initialize("clickyes.wav", 4, false);
                     BtnChangeAppearance(sender);
                     break;
                 case "btnBinary16":
+                    sound.Initialize("clickno.wav", 4, false);
                     BtnChangeAppearance(sender);
                     break;
                 case "btnBinary8":
+                    sound.Initialize("clickyes.wav", 4, false);
                     BtnChangeAppearance(sender);
                     break;
                 case "btnBinary4":
+                    sound.Initialize("clickno.wav", 4, false);
                     BtnChangeAppearance(sender);
                     break;
                 case "btnBinary2":
+                    sound.Initialize("clickyes.wav", 4, false);
                     BtnChangeAppearance(sender);
                     break;
                 case "btnBinary1":
+                    sound.Initialize("clickno.wav", 4, false);
                     BtnChangeAppearance(sender);
                     break;
             }
@@ -462,6 +487,8 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 
         private void btnResultSubmit_Click(object sender, RoutedEventArgs e)
         {
+            sound.Initialize("clickyes.wav", 5, false);
+
             string userName = tbUsername.Text.ToString();
             TimeSpan totalTime = GetTimeWithMilliseconds(_totalTimeSpent.ToString());
             string userTime = totalTime.ToString(@"dd\:mm\:ss\.fff");
@@ -486,6 +513,9 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
 
         private void btnResultCancel_Click(object sender, RoutedEventArgs e)
         {
+            sound.Initialize("clickno.wav", 5, false);
+            sound.Stop("Pull The Trigger - 8-Bit VRC6.wav");
+
             WindowManager._mainWin = true;
             WindowManager._mainWindow = new MainWindow();
             WindowManager._mainWindow.Show();
