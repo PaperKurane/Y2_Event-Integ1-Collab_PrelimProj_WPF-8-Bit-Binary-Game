@@ -24,8 +24,9 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
     public partial class GameWindow : Window
     {
         DateTime _startTime;
-        TimeSpan _timeSpent;
+        TimeSpan _totalTimeSpent;
         DispatcherTimer _dt = null;
+        DispatcherTimer _sessionTimer = null;
         Random _rnd = new Random();
         double _timeLeftInMilliseconds = 0;
 
@@ -81,9 +82,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
         
         private void UserDetails()
         {
-            _timeSpent = DateTime.Now - _startTime;
-
-            lbTime.Content = "Time: " + _timeSpent.ToString(@"hh\:mm\:ss");
+            lbTime.Content = "Time: " + _totalTimeSpent.ToString(@"hh\:mm\:ss");
             lbScore.Content = "Score: " + _userScore;
         }
 
@@ -182,10 +181,21 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             _gameRestart = false;
         }
 
-        private async void btnMega_Click(object sender, RoutedEventArgs e)
+        private void SessionTimer()
         {
             _startTime = DateTime.Now;
 
+            _sessionTimer = new DispatcherTimer();
+            _sessionTimer.Interval = new TimeSpan(0, 0, 0, 1, 0);
+            _sessionTimer.Tick += (sender, e) =>
+            {
+                _totalTimeSpent += DateTime.Now - _startTime;
+            };
+            _sessionTimer.Start();
+        }
+
+        private async void btnMega_Click(object sender, RoutedEventArgs e)
+        {
             btnMega.FontSize = 84; // Default is 48
             for (int x = 1; x >= 1; x--)
             {
@@ -200,6 +210,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             pbTimer2.Visibility = Visibility.Visible;
 
             TimerStart();
+            SessionTimer();
         }
 
         private void TimerStart()
@@ -276,6 +287,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
             else
             {
                 _dt.Stop();
+                _sessionTimer.Stop();
 
                 lbStatusHandler(2);
 
@@ -422,7 +434,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
         private void btnResultSubmit_Click(object sender, RoutedEventArgs e)
         {
             string userName = tbUsername.Text.ToString();
-            string userTime = _timeSpent.ToString(@"hh\:mm\:ss");
+            string userTime = _totalTimeSpent.ToString(@"hh\:mm\:ss");
             int userScore = _userScore;
 
             WindowManager._mainWin = true;
