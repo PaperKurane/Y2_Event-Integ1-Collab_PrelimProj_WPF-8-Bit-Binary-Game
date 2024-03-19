@@ -49,13 +49,13 @@
 
         <TextBox x:Name="tbUsername" Text="" FontSize="20" FontFamily="Segoe UI Semibold" FontWeight="Regular" Margin="185,162,0,0" TextWrapping="Wrap" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Top" Height="42" HorizontalAlignment="Left" Width="414" TextChanged="tbUsername_TextChanged" IsEnabled="True"/>
 
-        <Label x:Name="lbStats" Content="Final Stats" HorizontalContentAlignment="Center" FontSize="18" FontWeight="Bold" Margin="31,220,0,0" VerticalAlignment="Top" Width="722" Foreground="White" HorizontalAlignment="Left"/>
-        <Label x:Name="lbTime" Content="Time: -- -- --" HorizontalContentAlignment="Right" FontSize="24" FontWeight="Normal" Margin="192,254,0,0" VerticalAlignment="Top" Width="173" Foreground="White" HorizontalAlignment="Left"/>
-        <Label x:Name="lbScore" Content="Score: --" HorizontalContentAlignment="Left" FontSize="24" FontWeight="Normal" Margin="419,254,0,0" VerticalAlignment="Top" Width="173" Foreground="White" HorizontalAlignment="Left"/>
+        <Label x:Name="lbStats" Content="Final Stats" HorizontalContentAlignment="Center" FontSize="18" FontWeight="Bold" Margin="31,215,0,0" VerticalAlignment="Top" Width="722" Foreground="White" HorizontalAlignment="Left"/>
+        <Label x:Name="lbTime" Content="Time: -- -- --" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Normal" Margin="305,286,0,0" VerticalAlignment="Top" Width="173" Foreground="White" HorizontalAlignment="Left"/>
+        <Label x:Name="lbScore" Content="Score: --" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Normal" Margin="306,249,0,0" VerticalAlignment="Top" Width="172" Foreground="White" HorizontalAlignment="Left"/>
 
 
-        <Button x:Name="btnResultCancel" Visibility="Visible" Content="Cancel" Margin="214,322,0,0" FontSize="18" FontWeight="Normal" Background="White" Height="35" VerticalAlignment="Top" Click="btnResultCancel_Click" HorizontalAlignment="Left" Width="170" MouseEnter="btnResultCancel_MouseEnter" MouseLeave="btnResultCancelSubmit_MouseLeave"/>
-        <Button x:Name="btnResultSubmit" Visibility="Visible" Content="Submit" Margin="399,322,0,0" FontSize="18" FontWeight="Normal" Background="White" Height="35" VerticalAlignment="Top" Click="btnResultSubmit_Click" HorizontalAlignment="Left" Width="170" MouseEnter="btnResultSubmit_MouseEnter" MouseLeave="btnResultCancelSubmit_MouseLeave"/>
+        <Button x:Name="btnResultCancel" Visibility="Visible" Content="Cancel" Margin="214,339,0,0" FontSize="18" FontWeight="Normal" Background="White" Height="35" VerticalAlignment="Top" Click="btnResultCancel_Click" HorizontalAlignment="Left" Width="170" MouseEnter="btnResultCancel_MouseEnter" MouseLeave="btnResultCancelSubmit_MouseLeave"/>
+        <Button x:Name="btnResultSubmit" Visibility="Visible" Content="Submit" Margin="399,339,0,0" FontSize="18" FontWeight="Normal" Background="White" Height="35" VerticalAlignment="Top" Click="btnResultSubmit_Click" HorizontalAlignment="Left" Width="170" MouseEnter="btnResultSubmit_MouseEnter" MouseLeave="btnResultCancelSubmit_MouseLeave"/>
 
 
 
