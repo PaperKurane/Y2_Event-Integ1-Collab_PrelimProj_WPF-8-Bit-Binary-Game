@@ -273,7 +273,7 @@ namespace Y2_Event_Integ1_Collab_PrelimProj_WPF_8_Bit_Binary_Game
                 if (_currentLevel != 0)
                 {
                     double currSeconds = _timeLeftInMilliseconds / 1000;
-                    double newSeconds = Math.Round(currSeconds * 0.06);
+                    double newSeconds = Math.Round(currSeconds * 0.066);
                     newSeconds = currSeconds - newSeconds;
                     _timeLeftInMilliseconds = 1000 * newSeconds;
                 }
